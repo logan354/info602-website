@@ -2,7 +2,6 @@
 
 This website is a project for the INFO602 Assessment 3
 
-## Contributors
- 
- If you want to add, change or remove code from this codebase, open an issues clearly explaining what you want to add, change or remove.<br/>
- If you want to contribute to this codebase, create a new branch, and once completed, open a pull request. **Do not push to the main branch**.<br/>
+Check the [Contributing Guide]
+
+[contributing]: https://github.com/Block354/info602-website/blob/main/docs/CONTRIBUTING.md
