@@ -5,6 +5,7 @@
 
 <template>
     <Navbar />
+        <div>Booking View</div>
     <Footer />
 </template>
 

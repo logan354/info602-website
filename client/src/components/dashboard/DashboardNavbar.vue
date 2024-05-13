@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div>Footer Component</div>
+    <div>Dashboard Navbar Component</div>
 </template>
 
 <style>

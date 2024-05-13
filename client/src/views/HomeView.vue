@@ -5,7 +5,7 @@
 
 <template>
     <Navbar />
-    Hello World
+        <div>Home View</div>
     <Footer />
 </template>
 
