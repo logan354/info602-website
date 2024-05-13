@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div>Footer</div>
+    <div>Footer Component</div>
 </template>
 
 <style>

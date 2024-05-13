@@ -5,6 +5,7 @@
 
 <template>
     <Navbar />
+        <div>Menu View</div>
     <Footer />
 </template>
 
