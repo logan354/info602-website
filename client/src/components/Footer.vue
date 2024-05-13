@@ -2,7 +2,9 @@
 </script>
 
 <template>
-    <div>Footer Component</div>
+    <footer cl>
+
+    </footer>
 </template>
 
 <style>
