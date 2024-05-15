@@ -5,7 +5,7 @@
 
 <template>
     <Navbar />
-        <div>Login View</div>
+        <div>Register View</div>
     <Footer />
 </template>
 
