@@ -5,10 +5,12 @@
 
 <template>
     <Navbar />
-        <div>Login View</div>
+        <div>Register View</div>
     <Footer />
 </template>
 
 <style>
-
 </style>
+
+<script>
+</script>
