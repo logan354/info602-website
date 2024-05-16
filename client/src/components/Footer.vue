@@ -98,7 +98,7 @@ import { RouterLink } from "vue-router";
     </footer>
 </template>
 
-<style>
+<style scoped>
 footer {
     background-color: #45526e;
 }

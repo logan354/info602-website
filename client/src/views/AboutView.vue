@@ -23,7 +23,7 @@
     <Footer />
 </template>
 
-<style>
+<style scoped>
 .container {
     width: 90%;
     /* Adjust the width as needed */
