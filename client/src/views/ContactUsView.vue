@@ -5,9 +5,6 @@
 
 <template>
     <Navbar />
-<<<<<<< Updated upstream
-        <div>Contact Us View</div>
-=======
     <div class="container">
         <form id="booking-form" action="submit_booking.php" method="POST">
             <div class="form-group">
@@ -47,15 +44,10 @@
             <button type="submit">Submit Booking</button>
         </form>
     </div>
->>>>>>> Stashed changes
     <Footer />
 </template>
 
 <style>
-<<<<<<< Updated upstream
-
-</style>
-=======
 body {
     display: flex;
     flex-direction: column;
@@ -140,4 +132,3 @@ button:hover {
 
 <script>
 </script>
->>>>>>> Stashed changes
