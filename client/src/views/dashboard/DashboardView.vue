@@ -5,7 +5,7 @@
 
 <template>
     <DashboardNavbar />
-        <div>Dashboard Navbar View</div>
+        <div>Dashboard View</div>
     <DashboardFooter />
 </template>
 
