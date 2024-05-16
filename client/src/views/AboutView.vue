@@ -1,6 +1,6 @@
 <script setup>
-    import Navbar from "../components/Navigation.vue";
-    import Footer from "../components/Footer.vue";
+import Navbar from "../components/Navigation.vue";
+import Footer from "../components/Footer.vue";
 </script>
 
 <template>
@@ -24,6 +24,33 @@
 </template>
 
 <style>
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #333;
+}
+
 .container {
     width: 90%;
     /* Adjust the width as needed */
