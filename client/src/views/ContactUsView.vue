@@ -5,7 +5,7 @@
 
 <template>
     <Navbar />
-        <div>Contact View</div>
+        <div>Contact Us View</div>
     <Footer />
 </template>
 

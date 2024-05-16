@@ -1,5 +1,5 @@
 <script setup>
-    import DashboardNavbar from "../../components/dashboard/DashboardNavbar.vue";
+    import DashboardNavbar from "../../components/dashboard/DashboardSideNavigation.vue";
     import DashboardFooter from "../../components/dashboard/DashboardFooter.vue";
 </script>
 
