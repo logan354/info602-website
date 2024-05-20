@@ -37,26 +37,22 @@ import { RouterLink } from "vue-router";
 
                     <li class="nav-item">
                         <a class="nav-link">
-                            <RouterLink class="router-link" to="/booking">Booking</RouterLink>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link">
                             <RouterLink class="router-link" to="/about">About</RouterLink>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link">
-                            <RouterLink class="router-link" to="/contact">Contact</RouterLink>
+                            <button type="button" class="btn btn-success">
+                                <RouterLink class="router-link" to="/contact-us">Contact Us</RouterLink>
+                            </button>
                         </a>
                     </li>
                 </ul>
 
-                <!-- Secondary Links -->
                 <div class="navbar-account">
                     <div v-if="!account">
+                        <!-- Account Login and Register options-->
                         <a class="nav-link">
                             <RouterLink class="router-link" to="/login">Login</RouterLink>
                             <a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp</a>
@@ -64,7 +60,20 @@ import { RouterLink } from "vue-router";
                         </a>
                     </div>
                     <div v-else>
-                        <!-- Dropdown: Account and Dashboard options -->
+                        <!-- Account options -->
+                        <div class="dropdown">
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong style="color: black;">mdo</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
                     </div>
                 </div>
             </div>
@@ -74,7 +83,7 @@ import { RouterLink } from "vue-router";
 
 <style>
 .navbar-brand {
-    padding-left: 20px;
+    padding-left: 10px;
     padding-right: 0px;
 }
 
@@ -98,7 +107,7 @@ import { RouterLink } from "vue-router";
 export default {
     data() {
         return {
-            account: null
+            account: 1
         }
     }
 }
