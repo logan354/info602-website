@@ -1,6 +1,6 @@
 <script setup>
-    import Navbar from "../../components/Navigation.vue";
-    import Footer from "../../components/Footer.vue";
+import Navbar from "../../components/Navigation.vue";
+import Footer from "../../components/Footer.vue";
 </script>
 
 <template>
@@ -29,7 +29,7 @@
     <Footer />
 </template>
 
-<style>
+<style scoped>
 body {
     display: flex;
     flex-direction: column;
@@ -46,31 +46,75 @@ header {
     text-align: center;
 }
 
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 header h1 {
     margin: 0;
     color: #333;
 }
 
-.carousel-inner img {
-    width: calc(100% - 40px);
-    /* Adjusted width */
-    height: calc(100vh - 40px);
-    /* Adjusted height */
-    object-fit: cover;
-    margin: 20px;
-    /* Added margin for padding */
+.container {
+    width: 90%;
+    /* Adjust the width as needed */
+    margin: 20px auto 20px;
+    /* Added margin for spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
-.jumbotron {
-    background-color: #f9f9f9;
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    bottom: 100px;
-    left: 60px;
-    z-index: 1;
-    /* Ensure the jumbotron is above the carousel */
+form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+textarea,
+select,
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    /* Added margin for spacing */
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
 }
 </style>
 

@@ -1,6 +1,6 @@
 <script setup>
-    import Navbar from "../components/Navigation.vue";
-    import Footer from "../components/Footer.vue";
+import Navbar from "../components/Navigation.vue";
+import Footer from "../components/Footer.vue";
 </script>
 
 <template>
@@ -47,7 +47,7 @@
     <Footer />
 </template>
 
-<style>
+<style scoped>
 body {
     display: flex;
     flex-direction: column;
@@ -64,6 +64,11 @@ header {
     text-align: center;
 }
 
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 header h1 {
     margin: 0;

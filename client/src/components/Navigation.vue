@@ -81,7 +81,7 @@ import { RouterLink } from "vue-router";
     </nav>
 </template>
 
-<style>
+<style scoped>
 .navbar-brand {
     padding-left: 10px;
     padding-right: 0px;
