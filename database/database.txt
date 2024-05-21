@@ -1,0 +1,32 @@
+User Table:
+PK_id
+username
+password
+firstName
+lastName
+email
+phone
+
+Booking Table:
+PK_id
+FK_user_id
+FK_booking_type_id
+date
+location
+guests
+notes
+status
+
+BookingType Table
+PK_id
+name
+
+BookingMenu Table
+PK_booking_menu_id
+FK_booking_id
+FK_menu_id
+
+Menu Table
+PK_id
+name
+description
