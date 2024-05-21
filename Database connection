@@ -1,1 +1,46 @@
 //JavaScript database connection
+const sql = require('mssql');
+
+// Configuration for your SQL Server
+const config = {
+    user: 'your_username',
+    password: 'your_password',
+    server: 'your_server', // You can also use 'localhost\\instance' to connect to named instance
+    database: 'Assign_2_Comm',
+    options: {
+        trustServerCertificate: true, // change to true for local dev / self-signed certs
+    }
+};
+
+
+async function main() {
+    try {
+        // Connect to the database
+        await sql.connect(config);
+        
+        // Query the User_Table
+        const users = await sql.query`SELECT * FROM User_Table`;
+        console.dir(users);
+
+        // Query the Booking_Table
+        const bookings = await sql.query`SELECT * FROM Booking_Table`;
+        console.dir(bookings);
+
+        // Query the Menu_Table
+        const menus = await sql.query`SELECT * FROM Menu_Table`;
+        console.dir(menus);
+
+        // Query the Booking_Menu_Table
+        const bookingMenus = await sql.query`SELECT * FROM Booking_Menu_Table`;
+        console.dir(bookingMenus);
+
+    } catch (err) {
+        console.error('Error:', err.message);
+    } finally {
+        // Close the connection pool
+        await sql.close();
+    }
+}
+
+main();
+
