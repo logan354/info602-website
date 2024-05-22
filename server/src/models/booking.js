@@ -1,19 +1,9 @@
-/**
- * Booking Table
- * 
- * id
- * userId
- * bookingTypeId
- * date
- * location
- * guests
- * notes
- * 
- * status
- */
+import { DataTypes } from "sequelize";
 
-/**
- * BookingType Table
- * id
- * name
- */
+export default (sequelize) => {
+    sequelize.define("Booking_Table",
+    {
+
+    }
+);
+}

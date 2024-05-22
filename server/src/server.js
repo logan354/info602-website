@@ -1,11 +1,14 @@
-require('dotenv').config();
+require("dotenv").config();
+import express from "express";
 
-const express = require("express");
+// App
 const app = express();
 const port = process.env.PORT || 3000;
 
-// JSON
 app.use(express.json());
+
+// Database
+
 
 // Routes
 const userRouter = require("./routes/users");
@@ -16,7 +19,6 @@ app.use("/menu", menuRouter);
 
 const bookingRouter = require("./routes/bookings");
 app.use("/bookings", bookingRouter);
-
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
