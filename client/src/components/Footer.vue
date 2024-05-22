@@ -11,7 +11,8 @@ import { RouterLink } from "vue-router";
 
                 <!-- Logo -->
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">LOGO HERE</h6>
+                    <RouterLink><img src="../assets/images/logos/rasai-logo.jpg" alt="Rasai"></RouterLink>
+                    <p><br /></p>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam ipsum est distinctio perferendis
                         dolores, officiis quod recusandae beatae iure? Dolor error corrupti iusto, nulla doloremque
                         voluptate vitae ad veniam quia.</p>
@@ -24,13 +25,13 @@ import { RouterLink } from "vue-router";
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Company Name</h6>
                     <p>
-                        <a class="text-white">Login</a>
+                        <RouterLink class="router-link" to="/login"><a class="text-white">Login</a></RouterLink>
                     </p>
                     <p>
-                        <a class="text-white">Register</a>
+                        <RouterLink class="router-link" to="/register"><a class="text-white">Register</a></RouterLink>
                     </p>
                     <p>
-                        <a class="text-white">About Us</a>
+                        <RouterLink class="router-link" to="/about"><a class="text-white">About Us</a></RouterLink>
                     </p>
                     <p>
                         <a class="text-white">Privacy Policy</a>
@@ -42,15 +43,16 @@ import { RouterLink } from "vue-router";
 
                 <!-- Links -->
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
+                    <h6 class="text-uppercase mb-4 font-weight-bold text">Links</h6>
                     <p>
-                        <a class="text-white">Our Menu's</a>
+                        <RouterLink class="router-link" to="/menu"><a class="text-white">Our Menu</a></RouterLink>
                     </p>
                     <p>
-                        <a class="text-white">Make a Booking</a>
+                        <RouterLink class="router-link" to="/contact-us"><a class="text-white">Contact Us</a>
+                        </RouterLink>
                     </p>
                     <p>
-                        <a class="text-white">Your Account</a>
+                        <RouterLink class="router-link" to="/account"><a class="text-white">My Account</a></RouterLink>
                     </p>
                 </div>
 
@@ -60,11 +62,8 @@ import { RouterLink } from "vue-router";
                 <!-- Contact -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                    <p>
-                        <a class="text-white">Contact Us</a>
-                    </p>
-                    <p><i class="fas fa-envelope mr-3"></i>company@gmail.com</p>
-                    <p><i class="fas fa-phone mr-3"></i>+000 0000 0000</p>
+                    <p><i class="bi bi-envelope"></i> company@gmail.com</p>
+                    <p><i class="i bi-telephone"></i> +000 0000 0000</p>
                 </div>
             </div>
 
@@ -77,7 +76,7 @@ import { RouterLink } from "vue-router";
                 <!-- Copyright -->
                 <div class="col-md-7 col-lg-8 text-center text-md-start">
                     <div class="p-3">
-                        <a class="text-white">Copyright © 2024 Company Name</a>
+                        <a class="text-white text-decoration-none">Copyright © 2024 Company Name</a>
                     </div>
                 </div>
 
@@ -100,6 +99,10 @@ import { RouterLink } from "vue-router";
 
 <style scoped>
 footer {
-    background-color: #45526e;
+    background-color: #9b765b;
+}
+
+h6 {
+    color: #222121;
 }
 </style>
