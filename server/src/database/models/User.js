@@ -4,6 +4,10 @@ export default (sequelize) => {
     sequelize.define("User_Table",
     {
 
+    },
+    {
+        freezeTableName: true,
+        timestamps: false
     }
 );
 }
