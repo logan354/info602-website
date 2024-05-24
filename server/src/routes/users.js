@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
 // Get All
@@ -11,4 +11,4 @@ const router = express.Router();
 
 // Delete
 
-module.exports = router;
+export default router;
