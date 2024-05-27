@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import dotenv from "dotenv/config";
 import express from "express";
 
 import sequelize from "./database/database.js";
@@ -6,8 +6,6 @@ import sequelize from "./database/database.js";
 import usersRouter from "./routes/users.js";
 import bookingsRouter from "./routes/bookings.js";
 import menuRouter from "./routes/menu.js";
-
-dotenv.config();
 
 // Database
 console.log("Database Connecting. . .");

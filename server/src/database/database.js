@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import dotenv from "dotenv/config";
 
 import { Sequelize } from "sequelize";
 
@@ -7,8 +7,6 @@ import MenuModel from "./models/Menu.js";
 import BookingModel from "./models/Booking.js";
 import BookingMenuModel from "./models/BookingMenu.js";
 import BookingTypeModel from "./models/BookingType.js";
-
-dotenv.config();
 
 // Initiate database
 // **IMPORTANT** Make sure that database user is a sysadmin
