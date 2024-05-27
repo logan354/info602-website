@@ -4,10 +4,10 @@
 */
 
 -- The creation of the database.
-CREATE DATABASE Assign_2_Comm;
+CREATE DATABASE Rasai_DB;
 GO
 
-USE Assign_2_Comm;
+USE Rasai_DB;
 GO
 
 CREATE TABLE Booking_Type_Table(
@@ -25,12 +25,12 @@ GO
 
 CREATE TABLE User_Table(
 User_Table_ID INT IDENTITY(1,1) PRIMARY KEY,
-userName VARCHAR(40),
-user_Password VARCHAR(40),
-firstName VARCHAR(30),
-lastName VARCHAR(30),
-email VARCHAR(50),
-phone VARCHAR(12)
+User_Table_userName VARCHAR(40),
+User_Table_userPassword VARCHAR(40),
+User_Table_firstName VARCHAR(30),
+User_Table_lastName VARCHAR(30),
+User_Table_email VARCHAR(50),
+User_Table_phone VARCHAR(12)
 );
 GO
 
@@ -40,11 +40,11 @@ User_Table_ID INT,
 FOREIGN KEY (User_Table_ID) REFERENCES User_Table(User_Table_ID),
 Booking_Type_Table_ID INT,
 FOREIGN KEY (Booking_Type_Table_ID) REFERENCES Booking_Type_Table(Booking_Type_Table_ID),
-Booking_date date,
-Booking_location VARCHAR(50),
-guests INT,
-notes VARCHAR(280),
-Booking_status VARCHAR(50)
+Booking_Table_date date,
+Booking_Table_location VARCHAR(50),
+Booking_Table_guests INT,
+Booking_Table_notes VARCHAR(280),
+Booking_Table_status VARCHAR(50)
 );
 GO
 
