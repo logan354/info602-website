@@ -6,8 +6,13 @@ import Footer from "../components/Footer.vue";
 <template>
     <Navbar />
     <!-- Splash image placeholder -->
+    <!-- Splash image with centered text -->
+    <div class="splash-container">
+        <div class="splash-text">
+            Your ultimate food and catering partner.
+        </div>
     <div class="splash-image-placeholder"></div>
-
+    </div>
     <div class="container">
         <div class="quote">
             <p>"At Rasai, we believe in delivering more than just food. We create experiences that bring people together."</p>
@@ -178,24 +183,43 @@ header h1 {
 }
 
 /* Splash image styling */
-.splash-image {
-  width: 100%;
-  height: 300px; /* Set the height of the splash image */
+.splash-container {
+    position: relative;
+    width: 100%;
+    height: 900px; /* Set the height of the splash container */
+    background-color: #160101; /* Placeholder background color */
+    background-image: url('../assets/images/splash/splash3.jpg');
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.splash-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.splash-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 0; /* Ensure the overlay is behind the text */
+}
+
+.splash-text {
+    position: absolute;
+    color: white;
+    font-size: 3em; /* Adjust the font size as needed */
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
 }
 
 .splash-image-placeholder {
-  width: 100%;
-  height: 300px; /* Set the height of the splash image */
-  background-color: #ccc; /* Placeholder background color */
-  /* Alternatively, you can use a simple pattern as a background image */
-  /* background-image: url('path/to/pattern.png'); */
-  /* background-repeat: repeat; */
+    width: 100%;
+    height: 900px; /* Set the height of the splash image */
 }
 
 </style>

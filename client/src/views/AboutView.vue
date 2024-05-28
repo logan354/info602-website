@@ -5,8 +5,13 @@ import Footer from "../components/Footer.vue";
 
 <template>
     <Navbar />
-    <!-- Splash image placeholder -->
+    <!-- Splash image with centered text -->
+    <div class="splash-container">
+        <div class="splash-text">
+            Rasai Catering, established in 2008, derives its name from the Sinhala word 'Rasai,' which means 'tasty' or 'delicious'.
+        </div>
     <div class="splash-image-placeholder"></div>
+    </div>
     <div class="container">
         <div class="about-content">
             <h2>Our Story</h2>
@@ -29,10 +34,10 @@ import Footer from "../components/Footer.vue";
             <a>
                 <img src="../assets/images/about/divider2.png" height="100px">
             </a>
-            <a>
-                <img src="../assets/images/about/owner.jpg" height="100px">
-            </a>
             <div class="meet-owner">
+                <a>
+                    <img src="../assets/images/about/owner.jpg" class="owner-image">
+                </a>
                 <h2>Meet the Owner</h2>
                 <p class="paragraph">
 Born in Colombo, Sri Lanka, and having lived in Papua New Guinea for most of my schooling years, I migrated to New Zealand in 1999. I grew up where food was the centre of almost everything, from family gatherings to special occasions. Yearly celebrations such as the Sinhala and Tamil New Year and Christmas means the preparation of authentic cuisine - that reflects the Sri Lankan tradition and made with intention and care.
@@ -95,35 +100,60 @@ header h1 {
 
 .paragraph {
     margin-bottom: 100px; /* Add margin-bottom to space out paragraphs */
+    font-style: italic;
+    font-size: larger;
 }
 
 /* Splash image styling */
-.splash-image {
+.splash-container {
+    position: relative;
     width: 100%;
-    height: 300px; /* Set the height of the splash image */
+    height: 900px; /* Set the height of the splash container */
+    background-color: #160101; /* Placeholder background color */
+    background-image: url('../assets/images/splash/splash1.jpg');
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.splash-image img {
+.splash-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 0; /* Ensure the overlay is behind the text */
+}
+
+.splash-text {
+    position: absolute;
+    color: white;
+    font-size: 3em; /* Adjust the font size as needed */
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
 }
 
 .splash-image-placeholder {
     width: 100%;
-    height: 300px; /* Set the height of the splash image */
-    background-color: #ccc; /* Placeholder background color */
-    /* Alternatively, you can use a simple pattern as a background image */
-    /* background-image: url('path/to/pattern.png'); */
-    /* background-repeat: repeat; */
+    height: 900px; /* Set the height of the splash image */
 }
 
 /* Add styles for Meet the Owner section */
 .meet-owner {
-    margin-top: 200px; /* Add margin-top for separation */
+    margin-top: 100px; /* Add margin-top for separation */
+    text-align: center; /* Center text */
 }
 
+.owner-image {
+    width: auto;
+    height: 300px; /* Set the height of the owner image */
+    border-radius: 10px;
+    margin-bottom: 20px; /* Space between image and heading */
+}
 </style>
-
-<script>
-</script>

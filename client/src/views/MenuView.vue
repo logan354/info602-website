@@ -1,3 +1,52 @@
+<template>
+    <Navbar />
+    <!-- Splash image placeholder -->
+    <div class="splash-image-placeholder"></div>
+    <div class="container">
+        <div class="menu-options">
+            <h2>Explore Our Menu</h2>
+            <div class="menu-categories">
+                <div v-for="(category, index) in categories" :key="index" class="menu-category-wrapper">
+                    <div v-if="expanded !== index" :class="['menu-category', expanded === index ? 'expanded' : '']">
+                        <a @click.prevent="toggleDropdown(index)">
+                            <img :src="category.imgSrc" :alt="category.name">
+                        </a>
+                        <p>{{ category.name }}</p>
+                        <transition name="fade">
+                            <div v-if="dropdowns[index]" class="dropdown-content">
+                                <p>{{ category.description }}</p>
+                                <router-link to="/contact-us">
+                                    <button class="contact-button">Contact Us</button>
+                                </router-link>
+                            </div>
+                        </transition>
+                    </div>
+                    <div v-else class="placeholder"></div>
+                </div>
+                <div v-if="expanded !== null" class="expanded-container">
+                    <div :class="['menu-category', 'expanded']">
+                        <a @click.prevent="toggleDropdown(expanded)">
+                            <img :src="categories[expanded].imgSrc" :alt="categories[expanded].name">
+                        </a>
+                        <div class="expanded-content">
+                            <h3>{{ categories[expanded].name }}</h3>
+                            <transition name="fade">
+                                <div class="dropdown-content">
+                                    <p>{{ categories[expanded].description }}</p>
+                                    <router-link to="/contact-us">
+                                        <button class="contact-button">Contact Us</button>
+                                    </router-link>
+                                </div>
+                            </transition>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Footer />
+</template>
+
 <script setup>
 import { ref } from 'vue';
 import Navbar from "../components/Navigation.vue";
@@ -23,52 +72,8 @@ const toggleDropdown = (index) => {
         expanded.value = index;
     }
 };
-</script>
 
-<template>
-    <Navbar />
-    <!-- Splash image placeholder -->
-    <div class="splash-image-placeholder"></div>
-    <div class="container">
-        <div class="menu-options">
-            <h2>Explore Our Menu</h2>
-            <div class="menu-categories">
-                <div v-for="(category, index) in categories" :key="index" class="menu-category-wrapper">
-                    <div v-if="expanded !== index" :class="['menu-category', expanded === index ? 'expanded' : '']">
-                        <a @click.prevent="toggleDropdown(index)">
-                            <img :src="category.imgSrc" :alt="category.name">
-                        </a>
-                        <p>{{ category.name }}</p>
-                        <transition name="fade">
-                            <div v-if="dropdowns[index]" class="dropdown-content">
-                                <p>{{ category.description }}</p>
-                            </div>
-                        </transition>
-                    </div>
-                    <div v-else class="placeholder"></div>
-                </div>
-                <div v-if="expanded !== null" class="expanded-container">
-                    <div :class="['menu-category', 'expanded']">
-                        <a @click.prevent="toggleDropdown(expanded)">
-                            <img :src="categories[expanded].imgSrc" :alt="categories[expanded].name">
-                        </a>
-                        <div class="expanded-content">
-                            <h3>{{ categories[expanded].name }}</h3>
-                            <transition name="fade">
-                                <div class="dropdown-content">
-                                    <p>{{ categories[expanded].description }}</p>
-                                </div>
-                            </transition>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <Footer />
-</template>
-
-<script>
+// Categories data
 const categories = [
     { name: 'The Village Menu', imgSrc: 'https://via.placeholder.com/200', description: 'The Village Menu option resembles the quintessential menu, consisting of plain white rice, three vegetable dishes, and a meat or fish dish. Seasonal vegetables will complement the thick creamy coconut milk gravy. This menu will be catered to your requirements.' },
     { name: 'The Hungry Lankan', imgSrc: 'https://via.placeholder.com/200', description: 'The family meals in Sri Lanka are mostly buffet style – ‘serve as much as you want’. To cater to this requirement, ‘The Hungry Lankan’ is all about quantity. If you have a large appetite, this option might suit you. This menu will be catered to your requirements.' },
@@ -120,7 +125,7 @@ header h1 {
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    margin-bottom: 50px
+    margin-bottom: 50px;
 }
 
 .menu-options {
@@ -186,7 +191,6 @@ header h1 {
     align-items: center; /* Added for centering content vertically */
 }
 
-
 .menu-category.expanded img {
     width: 400px;
     transition: width 0.5s ease; /* Increased duration for smoother transitions */
@@ -217,7 +221,6 @@ header h1 {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     display: none;
-    
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -248,4 +251,19 @@ header h1 {
   /* background-repeat: repeat; */
 }
 
+.contact-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #0056b3;
+}
 </style>
