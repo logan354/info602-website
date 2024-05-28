@@ -41,7 +41,7 @@ User_Table_id INT,
 FOREIGN KEY (User_Table_id) REFERENCES User_Table(User_Table_id),
 Booking_Type_Table_id INT,
 FOREIGN KEY (Booking_Type_Table_id) REFERENCES Booking_Type_Table(Booking_Type_Table_id),
-Booking_Table_createdAt date
+Booking_Table_createdAt date,
 Booking_Table_date date,
 Booking_Table_location VARCHAR(50),
 Booking_Table_guests INT,
