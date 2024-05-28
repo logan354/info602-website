@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import HomeView from "../views/HomeView.vue";
 import MenuView from "@/views/MenuView.vue";
-import BookingView from "@/views/BookingView.vue";
+import ContactUsView from "@/views/ContactUsView.vue";
 import AboutView from "../views/AboutView.vue";
-import ContactView from "@/views/ContactView.vue";
 import LoginView from "@/views/account/LoginView.vue";
 import RegisterView from "@/views/account/RegisterView.vue";
 import DashboardView from "@/views/dashboard/DashboardView.vue";
@@ -22,19 +22,14 @@ const router = createRouter({
       component: MenuView
     },
     {
-      path: "/booking",
-      name: "booking",
-      component: BookingView
+      path: "/contact-us",
+      name: "contact-us",
+      component: ContactUsView
     },
     {
       path: "/about",
       name: "about",
       component: AboutView
-    },
-    {
-      path: "/contact",
-      name: "contact",
-      component: ContactView
     },
     {
       path: "/login",

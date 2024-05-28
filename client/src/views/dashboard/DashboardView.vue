@@ -1,15 +1,15 @@
 <script setup>
-    import DashboardNavbar from "../../components/dashboard/DashboardNavbar.vue";
+    import DashboardNavbar from "../../components/dashboard/DashboardSideNavigation.vue";
     import DashboardFooter from "../../components/dashboard/DashboardFooter.vue";
 </script>
 
 <template>
     <DashboardNavbar />
-        <div>Dashboard Navbar View</div>
+        <div>Dashboard View</div>
     <DashboardFooter />
 </template>
 
-<style>
+<style scoped>
 </style>
 
 <script>

@@ -1,0 +1,67 @@
+Values:
+
+INSERT INTO Booking_Type_Table (Booking_Type_name)
+VALUES 
+    ('Business Meeting'),
+    ('Conference'),
+    ('Wedding'),
+    ('Birthday Party'),
+    ('Anniversary'),
+    ('Training Session'),
+    ('Product Launch'),
+    ('Family Reunion'),
+    ('Charity Event'),
+    ('Networking Event');
+
+	INSERT INTO Menu_Table (Menu_Table_name, Menu_Table_description)
+VALUES 
+    ('Starter Menu', 'Includes soup, salad, and appetizers.'),
+    ('Main Course Menu', 'Variety of main dishes including meat, fish, and vegetarian options.'),
+    ('Dessert Menu', 'Selection of desserts including cakes, pastries, and ice cream.'),
+    ('Beverage Menu', 'Assortment of beverages including soft drinks, juices, and alcoholic drinks.'),
+    ('Specialty Menu', 'Chef''s special dishes for the occasion.'),
+    ('Vegetarian Menu', 'Vegetarian options for guests with dietary restrictions.'),
+    ('Kids Menu', 'Child-friendly dishes for young guests.'),
+    ('Healthy Menu', 'Nutritious options for health-conscious attendees.'),
+    ('Gluten-Free Menu', 'Menu items suitable for gluten-intolerant guests.'),
+    ('International Menu', 'Cuisine from around the world to cater to diverse tastes.');
+
+	INSERT INTO User_Table (userName, user_Password, firstName, lastName, email, phone)
+VALUES 
+    ('john_doe', 'password123', 'John', 'Doe', 'john.doe@example.com', '123-456-7890'),
+    ('jane_smith', 'abc123', 'Jane', 'Smith', 'jane.smith@example.com', '987-654-3210'),
+    ('mike_jones', 'passw0rd', 'Mike', 'Jones', 'mike.jones@example.com', '555-555-5555'),
+    ('sarah_adams', 'sarah2023', 'Sarah', 'Adams', 'sarah.adams@example.com', '111-222-3333'),
+    ('david_wilson', 'david1234', 'David', 'Wilson', 'david.wilson@example.com', '444-444-4444'),
+    ('emily_brown', 'emily5678', 'Emily', 'Brown', 'emily.brown@example.com', '666-777-8888'),
+    ('sam_roberts', 'samuel456', 'Sam', 'Roberts', 'sam.roberts@example.com', '999-999-9999'),
+    ('lisa_jackson', 'lisa789', 'Lisa', 'Jackson', 'lisa.jackson@example.com', '333-222-1111'),
+    ('chris_taylor', 'chris2023', 'Chris', 'Taylor', 'chris.taylor@example.com', '777-888-9999'),
+    ('amanda_harris', 'amanda12', 'Amanda', 'Harris', 'amanda.harris@example.com', '000-111-2222');
+
+	INSERT INTO Booking_Table (User_Table_ID, Booking_Type_Table_ID, Booking_date, Booking_location, guests, notes, Booking_status)
+VALUES 
+    (1, 1, '2024-05-25', 'Main Hall', 10, 'Business partners meeting', 'Confirmed'),
+    (2, 4, '2024-06-10', 'Private Room', 20, 'Surprise birthday party for Jane', 'Confirmed'),
+    (3, 3, '2024-07-05', 'Garden Area', 50, 'Wedding reception for Mike and Sarah', 'Pending'),
+    (4, 2, '2024-08-15', 'Conference Hall', 100, 'Annual conference for the company', 'Confirmed'),
+    (5, 5, '2024-09-20', 'Banquet Hall', 30, '10th anniversary celebration', 'Confirmed'),
+    (6, 6, '2024-10-12', 'Training Room', 15, 'Employee training session', 'Confirmed'),
+    (7, 7, '2024-11-05', 'Event Space', 50, 'Product launch event', 'Pending'),
+    (8, 8, '2024-12-08', 'Function Room', 40, 'Family reunion gathering', 'Confirmed'),
+    (9, 9, '2025-01-15', 'Community Center', 60, 'Charity fundraiser event', 'Pending'),
+    (10, 10, '2025-02-20', 'Networking Venue', 25, 'Networking event for professionals', 'Confirmed');
+
+
+	INSERT INTO Booking_Menu_Table (Booking_Table_ID, Menu_Table_ID)
+VALUES 
+    (1, 1), (1, 2), (1, 4),
+    (2, 1), (2, 2), (2, 3), (2, 4),
+    (3, 2), (3, 3), (3, 4),
+    (4, 2), (4, 3), (4, 4),
+    (5, 1), (5, 2), (5, 3), (5, 4),
+    (6, 1), (6, 6),
+    (7, 4), (7, 5), (7, 6), (7, 7),
+    (8, 2), (8, 3), (8, 4),
+    (9, 3), (9, 5), (9, 6),
+    (10, 1), (10, 4);

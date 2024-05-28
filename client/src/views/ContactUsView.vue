@@ -1,29 +1,47 @@
 <script setup>
-import Navbar from "../../components/Navigation.vue";
-import Footer from "../../components/Footer.vue";
+import Navbar from "../components/Navigation.vue";
+import Footer from "../components/Footer.vue";
 </script>
 
 <template>
     <Navbar />
     <div class="container">
-        <form id="registration-form" action="register.php" method="POST">
+        <form id="booking-form" action="submit_booking.php" method="POST">
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="event-date">Event Date:</label>
+                <input type="date" id="event-date" name="event_date" required>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="event-time">Event Time:</label>
+                <input type="time" id="event-time" name="event_time" required>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="event-type">Type of Event:</label>
+                <select id="event-type" name="event_type" required>
+                    <option value="">Select Event Type</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="birthday">Birthday Party</option>
+                    <option value="other">Other</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="event-location">Event Location:</label>
+                <input type="text" id="event-location" name="event_location" required>
             </div>
-            <button type="submit">Register</button>
+            <div class="form-group">
+                <label for="emergency-contact">Emergency Contact Number:</label>
+                <input type="tel" id="emergency-contact" name="emergency_contact" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">Number of Guests:</label>
+                <input type="number" id="guests" name="guests" required>
+            </div>
+            <div class="form-group">
+                <label for="details">Event Details:</label>
+                <textarea id="details" name="details" rows="5" required></textarea>
+            </div>
+            <button type="submit">Submit Booking</button>
         </form>
     </div>
     <Footer />
@@ -92,8 +110,7 @@ input[type="tel"],
 input[type="date"],
 input[type="number"],
 textarea,
-select,
-input[type="password"] {
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
