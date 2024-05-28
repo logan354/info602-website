@@ -1,29 +1,85 @@
 <script setup>
 import Navbar from "../../components/Navigation.vue";
 import Footer from "../../components/Footer.vue";
+import { ref } from "vue";
+
+const username = ref("");
+const password = ref("");
+const confirmPassword = ref("");
+const email = ref("");
+const phone = ref("");
+const termsAccepted = ref(false);
+const errorMessage = ref("");
+const loading = ref(false);
+
+const validateForm = () => {
+    if (password.value !== confirmPassword.value) {
+        errorMessage.value = "Passwords do not match.";
+        return false;
+    }
+    if (!termsAccepted.value) {
+        errorMessage.value = "You must accept the terms and conditions.";
+        return false;
+    }
+    return true;
+};
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+    if (validateForm()) {
+        loading.value = true;
+        // Simulate a registration API call
+        setTimeout(() => {
+            loading.value = false;
+            alert("Registration successful!");
+            // Redirect to login or another page
+        }, 2000);
+    }
+};
 </script>
 
 <template>
     <Navbar />
+    <!-- Splash image placeholder -->
+    <div class="splash-image-placeholder"></div>
     <div class="container">
-        <form id="registration-form" action="register.php" method="POST">
+        <form id="registration-form" @submit="handleSubmit">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" v-model="username" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" v-model="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" v-model="confirmPassword" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" v-model="email" required>
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" v-model="phone" required>
             </div>
-            <button type="submit">Register</button>
+            <div class="form-group">
+                <input type="checkbox" id="terms" v-model="termsAccepted" required>
+                <label for="terms">I agree to the <a href="/terms">terms and conditions</a></label>
+            </div>
+            <!-- 
+            <div class="form-group">
+                <label for="captcha">Captcha:</label>
+                <div>
+                    <!-- Placeholder for a captcha widget
+                    <!-- <img src="/path/to/captcha" alt="Captcha">
+                </div>
+                <input type="text" id="captcha" name="captcha" required>
+            </div> -->
+            
+            <button type="submit" :disabled="loading">{{ loading ? "Registering..." : "Register" }}</button>
+            <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
         </form>
     </div>
     <Footer />
@@ -59,9 +115,7 @@ header h1 {
 
 .container {
     width: 90%;
-    /* Adjust the width as needed */
     margin: 20px auto 20px;
-    /* Added margin for spacing */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +154,6 @@ input[type="password"] {
     border-radius: 5px;
     box-sizing: border-box;
     margin-top: 5px;
-    /* Added margin for spacing */
 }
 
 button {
@@ -113,8 +166,23 @@ button {
     width: 100%;
 }
 
-button:hover {
+button:disabled {
+    background-color: #9e9e9e;
+}
+
+button:hover:enabled {
     background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.splash-image-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
 }
 </style>
 
