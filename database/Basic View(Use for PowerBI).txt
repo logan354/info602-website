@@ -1,0 +1,29 @@
+//basic view for the database srcipt
+
+CREATE VIEW invoice AS
+SELECT 
+    bt.Booking_Table_ID,
+    bt.User_Table_ID,
+    ut.userName,
+    ut.firstName,
+    ut.lastName,
+    bt.Booking_Type_Table_ID,
+    btt.Booking_Type_name,
+    bt.Booking_date,
+    bt.Booking_location,
+    bt.guests,
+    bt.notes,
+    bt.Booking_status,
+    mt.Menu_Table_ID,
+    mt.Menu_Table_name,
+    mt.Menu_Table_description
+FROM 
+    Booking_Table bt
+INNER JOIN 
+    User_Table ut ON bt.User_Table_ID = ut.User_Table_ID
+INNER JOIN 
+    Booking_Type_Table btt ON bt.Booking_Type_Table_ID = btt.Booking_Type_Table_ID
+LEFT JOIN 
+    Booking_Menu_Table bmt ON bt.Booking_Table_ID = bmt.Booking_Table_ID
+LEFT JOIN 
+    Menu_Table mt ON bmt.Menu_Table_ID = mt.Menu_Table_ID;
