@@ -1,6 +1,7 @@
 /*
 	This script is for Assignment 2 
 	Business Interpersonal Communications.
+	Server	DESKTOP-2D6F3SO\SQLEXPRESS
 */
 
 -- The creation of the database.
@@ -40,6 +41,7 @@ User_Table_ID INT,
 FOREIGN KEY (User_Table_ID) REFERENCES User_Table(User_Table_ID),
 Booking_Type_Table_ID INT,
 FOREIGN KEY (Booking_Type_Table_ID) REFERENCES Booking_Type_Table(Booking_Type_Table_ID),
+Booking_Table_createdAt date
 Booking_Table_date date,
 Booking_Table_location VARCHAR(50),
 Booking_Table_guests INT,
