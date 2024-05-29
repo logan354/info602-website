@@ -1,10 +1,15 @@
 <template>
     <Navbar />
-    <!-- Splash image placeholder -->
+    <!-- Splash image with centered text -->
+    <div class="splash-container">
+        <div class="splash-text">
+            Explore our incredible menu.
+        </div>
+    </div>
     <div class="splash-image-placeholder"></div>
     <div class="container">
         <div class="menu-options">
-            <h2>Explore Our Menu</h2>
+            <h2>Our menus change with the seasons and we have a broad menu offer to suit a variety of events. Bespoke menus can be created for special events.</h2>
             <div class="menu-categories">
                 <div v-for="(category, index) in categories" :key="index" class="menu-category-wrapper">
                     <div v-if="expanded !== index" :class="['menu-category', expanded === index ? 'expanded' : '']">
@@ -75,18 +80,18 @@ const toggleDropdown = (index) => {
 
 // Categories data
 const categories = [
-    { name: 'The Village Menu', imgSrc: 'https://via.placeholder.com/200', description: 'The Village Menu option resembles the quintessential menu, consisting of plain white rice, three vegetable dishes, and a meat or fish dish. Seasonal vegetables will complement the thick creamy coconut milk gravy. This menu will be catered to your requirements.' },
-    { name: 'The Hungry Lankan', imgSrc: 'https://via.placeholder.com/200', description: 'The family meals in Sri Lanka are mostly buffet style – ‘serve as much as you want’. To cater to this requirement, ‘The Hungry Lankan’ is all about quantity. If you have a large appetite, this option might suit you. This menu will be catered to your requirements.' },
-    { name: 'Traditional Yellow Rice', imgSrc: 'https://via.placeholder.com/200', description: 'Traditionally, people in Sri Lanka go the extra mile to prepare this menu for a special family occasion. As the name implies, turmeric is used to colour the rice to a yellow colour – hence the name ‘Yellow Rice’. This is traditionally cooked with basmati rice or traditional Sri Lanka samba rice, served with accompaniments including meat, brinjal dry curry, potatoes cooked in coconut milk, sauteed green beans, a salad and pappadum. The choice of dishes to accompany the traditional ‘Yellow Rice’ menu will be catered to your desires.' },
-    { name: 'Specialty Biriyani', imgSrc: 'https://via.placeholder.com/200', description: 'At Rasai, a Biriyani meal is the ultimate special occasion dinner menu.  Biriyani is traditionally basmati or traditional Sri Lankan samba rice cooked in a rich, delicious meat, with sultanas and cashew nuts. The meat is of your choice. Accompanying the biriyani are Rasai’s mouth-watering delicious array of dishes, including a choice of a dry potato dish, baked or fried fish, fish cutlets, sauteed green beans, brinjals that are deep fried and smothered in a sweet chilli coconut sauce, pappadum and vegetable pickle. This ultimate specialty is very rich and filling! Tell us what you would like to be included in this menu option!' },
-    { name: 'Solely Vegetarian', imgSrc: 'https://via.placeholder.com/200', description: 'At Rasai, we know that not all menus have to have meat or fish included to make it special. This option caters to a menu that is just as delicious and rich and will include your choice of seasonal vegetables and the needs of your palette..' },
-    { name: 'Dutch Lamprais', imgSrc: 'https://via.placeholder.com/200', description: 'This is a rich meal which is cooked twice. First the rice and accompaniments such as dry coconut-based curries, such as chicken, potato, beans, caramelized onion, cooking banana, egg and fish cakes are cooked separately. Then this food is wrapped in a banana leaf and baked. On opening up the ‘parceled’ meal, you get the smokiness smell of the banana leaf, and the taste is just divine! It is truly a unique meal. Try it, you will not be disappointed!' },
-    { name: 'String Hopper Menu', imgSrc: 'https://via.placeholder.com/200', description: 'As the name implies this traditional specialty is made out of rice flour that is squeezed through a mould to form thin ‘strings’ that are spiraled to look like a soft pancake.  These ‘pancakes’ are then steamed to hold its shape. Traditionally, this is served with ‘kiri hoddi’ or coconut milk gravy, coconut sambol, a dry potato dish or dhal curry and any fish or meat curry. In Sri Lanka, string hoppers are usually had for breakfast but can equally be a lunch or dinner menu. If you are not a real rice fan, then do not miss out trying this menu! It can be catered to your needs.' },
-    { name: 'Roti Menu', imgSrc: 'https://via.placeholder.com/200', description: ' In Sri Lanka, there is a real wide choice of rotis (or flat bread). At Rasai, there is a choice available to you also! These can range from coconut roti (made from flour, grated fresh coconut, onion, green chillies); godambara roti (where the dough is soaked in oil to make it very thin once it is rolled out. This can be a plain roti or an egg roti); stuffed roti (either with a dry potato curry or potato and peas) or just plain white/wholemeal roti. The accompaniment for any roti is really your choice. You can have any of these rotis with just an onion sambol, an onion/dry fish chutney, dry potato curry or a meat or fish curry. Talk to us to see what would suit your requirements.' },
-    { name: 'Coconut Milk Rice', imgSrc: 'https://via.placeholder.com/200', description: 'As the name implies, this is rice cooked in coconut milk. In Sri Lanka, this is usually a breakfast staple and is usually made for a special occasion, such as a special event, a birthday, etc. This staple can be made with just rice or made with rice and mung beans for extra flavour. This is usually accompanied by an onion sambol or onion/dry fish chutney and sometimes with a red fish curry. Talk to us about your needs!' },
-    { name: 'Finger Food Palette', imgSrc: 'https://via.placeholder.com/200', description: 'This palette includes a selection of traditional Sri Lankan finger food, ideal for morning or afternoon tea. The selection ranges from fish/meat cutlets (as it is traditionally called or also known as fish/meat cakes); patis (a traditional pastry with filling of either fish/meat and potatoes and then baked); Fish/meat rolls (a thin pancake that includes fish/meat filling, crumbed and fried); traditional tuna sandwiches; caramelized onion puffs, just to name a few. Talk to us if you would like to have a morning or afternoon tea in traditional Sri Lankan style!' },
-    { name: 'Specialty Dishes', imgSrc: 'https://via.placeholder.com/200', description: 'Specialty 1: Pork Pie – A flaky pastry pie, filled with pork and potatoes cooked in rich coconut gravy. Specialty 2: Chicken Pie – A flaky pastry pie, filled with chicken, potatoes and mushrooms cooked in a rich coconut gravy. Specialty 3: Quiche – Your traditional ham and egg quiche but with a Sri Lankan twist!' },
-    { name: 'Desserts', imgSrc: 'https://via.placeholder.com/200', description: 'Wattalappam – a traditional Sri Lankan dessert made from coconut milk and jaggery (sultanas and cashew nuts are optional). Traditional Sri Lankan sweets (such as milk toffee, coconut ice). Apple pie – with a cinnamon twist. Spiced fruit salad (seasonal). Kiri Panni – a popular Sri Lankan dessert of yoghurt and treacle. Other desserts are available on request.' }
+    { name: 'The Village Menu', imgSrc: '../src/assets/images/menu/food1.jpg', description: 'The Village Menu option resembles the quintessential menu, consisting of plain white rice, three vegetable dishes, and a meat or fish dish. Seasonal vegetables will complement the thick creamy coconut milk gravy. This menu will be catered to your requirements.' },
+    { name: 'The Hungry Lankan', imgSrc: '../src/assets/images/menu/food3.jpg', description: 'The family meals in Sri Lanka are mostly buffet style – ‘serve as much as you want’. To cater to this requirement, ‘The Hungry Lankan’ is all about quantity. If you have a large appetite, this option might suit you. This menu will be catered to your requirements.' },
+    { name: 'Traditional Yellow Rice', imgSrc: '../src/assets/images/menu/food10.jpg', description: 'Traditionally, people in Sri Lanka go the extra mile to prepare this menu for a special family occasion. As the name implies, turmeric is used to colour the rice to a yellow colour – hence the name ‘Yellow Rice’. This is traditionally cooked with basmati rice or traditional Sri Lanka samba rice, served with accompaniments including meat, brinjal dry curry, potatoes cooked in coconut milk, sauteed green beans, a salad and pappadum. The choice of dishes to accompany the traditional ‘Yellow Rice’ menu will be catered to your desires.' },
+    { name: 'Specialty Biriyani', imgSrc: '../src/assets/images/menu/food13.jpg', description: 'At Rasai, a Biriyani meal is the ultimate special occasion dinner menu.  Biriyani is traditionally basmati or traditional Sri Lankan samba rice cooked in a rich, delicious meat, with sultanas and cashew nuts. The meat is of your choice. Accompanying the biriyani are Rasai’s mouth-watering delicious array of dishes, including a choice of a dry potato dish, baked or fried fish, fish cutlets, sauteed green beans, brinjals that are deep fried and smothered in a sweet chilli coconut sauce, pappadum and vegetable pickle. This ultimate specialty is very rich and filling! Tell us what you would like to be included in this menu option!' },
+    { name: 'Solely Vegetarian', imgSrc: '../src/assets/images/menu/food8.jpg', description: 'At Rasai, we know that not all menus have to have meat or fish included to make it special. This option caters to a menu that is just as delicious and rich and will include your choice of seasonal vegetables and the needs of your palette..' },
+    { name: 'Dutch Lamprais', imgSrc: '../src/assets/images/menu/food17.jpg', description: 'This is a rich meal which is cooked twice. First the rice and accompaniments such as dry coconut-based curries, such as chicken, potato, beans, caramelized onion, cooking banana, egg and fish cakes are cooked separately. Then this food is wrapped in a banana leaf and baked. On opening up the ‘parceled’ meal, you get the smokiness smell of the banana leaf, and the taste is just divine! It is truly a unique meal. Try it, you will not be disappointed!' },
+    { name: 'String Hopper Menu', imgSrc: '../src/assets/images/menu/food21.jpg', description: 'As the name implies this traditional specialty is made out of rice flour that is squeezed through a mould to form thin ‘strings’ that are spiraled to look like a soft pancake.  These ‘pancakes’ are then steamed to hold its shape. Traditionally, this is served with ‘kiri hoddi’ or coconut milk gravy, coconut sambol, a dry potato dish or dhal curry and any fish or meat curry. In Sri Lanka, string hoppers are usually had for breakfast but can equally be a lunch or dinner menu. If you are not a real rice fan, then do not miss out trying this menu! It can be catered to your needs.' },
+    { name: 'Roti Menu', imgSrc: '../src/assets/images/menu/food24.jpg', description: ' In Sri Lanka, there is a real wide choice of rotis (or flat bread). At Rasai, there is a choice available to you also! These can range from coconut roti (made from flour, grated fresh coconut, onion, green chillies); godambara roti (where the dough is soaked in oil to make it very thin once it is rolled out. This can be a plain roti or an egg roti); stuffed roti (either with a dry potato curry or potato and peas) or just plain white/wholemeal roti. The accompaniment for any roti is really your choice. You can have any of these rotis with just an onion sambol, an onion/dry fish chutney, dry potato curry or a meat or fish curry. Talk to us to see what would suit your requirements.' },
+    { name: 'Coconut Milk Rice', imgSrc: '../src/assets/images/menu/food4.jpg', description: 'As the name implies, this is rice cooked in coconut milk. In Sri Lanka, this is usually a breakfast staple and is usually made for a special occasion, such as a special event, a birthday, etc. This staple can be made with just rice or made with rice and mung beans for extra flavour. This is usually accompanied by an onion sambol or onion/dry fish chutney and sometimes with a red fish curry. Talk to us about your needs!' },
+    { name: 'Finger Food Palette', imgSrc: '../src/assets/images/menu/food28.jpg', description: 'This palette includes a selection of traditional Sri Lankan finger food, ideal for morning or afternoon tea. The selection ranges from fish/meat cutlets (as it is traditionally called or also known as fish/meat cakes); patis (a traditional pastry with filling of either fish/meat and potatoes and then baked); Fish/meat rolls (a thin pancake that includes fish/meat filling, crumbed and fried); traditional tuna sandwiches; caramelized onion puffs, just to name a few. Talk to us if you would like to have a morning or afternoon tea in traditional Sri Lankan style!' },
+    { name: 'Specialty Dishes', imgSrc: '../src/assets/images/menu/food30.jpg', description: 'Specialty 1: Pork Pie – A flaky pastry pie, filled with pork and potatoes cooked in rich coconut gravy. Specialty 2: Chicken Pie – A flaky pastry pie, filled with chicken, potatoes and mushrooms cooked in a rich coconut gravy. Specialty 3: Quiche – Your traditional ham and egg quiche but with a Sri Lankan twist!' },
+    { name: 'Desserts', imgSrc: '../src/assets/images/menu/food33.jpg', description: 'Wattalappam – a traditional Sri Lankan dessert made from coconut milk and jaggery (sultanas and cashew nuts are optional). Traditional Sri Lankan sweets (such as milk toffee, coconut ice). Apple pie – with a cinnamon twist. Spiced fruit salad (seasonal). Kiri Panni – a popular Sri Lankan dessert of yoghurt and treacle. Other desserts are available on request.' }
 ];
 </script>
 
@@ -231,24 +236,38 @@ header h1 {
 }
 
 /* Splash image styling */
-.splash-image {
-  width: 100%;
-  height: 300px; /* Set the height of the splash image */
+.splash-container {
+    position: relative;
+    width: 100%;
+    height: 900px; /* Set the height of the splash container */
+    background-color: #160101; /* Placeholder background color */
+    background-image: url('../assets/images/splash/splash5.jpg');
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.splash-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.splash-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 0; /* Ensure the overlay is behind the text */
 }
 
-.splash-image-placeholder {
-  width: 100%;
-  height: 300px; /* Set the height of the splash image */
-  background-color: #ccc; /* Placeholder background color */
-  /* Alternatively, you can use a simple pattern as a background image */
-  /* background-image: url('path/to/pattern.png'); */
-  /* background-repeat: repeat; */
+.splash-text {
+    position: absolute;
+    color: white;
+    font-size: 3em; /* Adjust the font size as needed */
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
 }
 
 .contact-button {

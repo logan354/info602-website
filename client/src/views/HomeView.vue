@@ -47,28 +47,28 @@ import Footer from "../components/Footer.vue";
             <div class="image-grid">
                 <!-- Placeholder images go here -->
                 <div class="gallery-image">
-                    <img src="https://via.placeholder.com/500" alt="Placeholder Image">
+                    <img src="../assets/images/menu/food1.jpg" alt="Placeholder Image">
                 </div>
                 <div class="gallery-image">
-                    <img src="https://via.placeholder.com/500" alt="Placeholder Image">
+                    <img src="../assets/images/menu/food4.jpg" alt="Placeholder Image">
                 </div>
                 <div class="gallery-image">
-                    <img src="https://via.placeholder.com/500" alt="Placeholder Image">
+                    <img src="../assets/images/menu/food8.jpg" alt="Placeholder Image">
                 </div>
                 <div class="gallery-image">
-                    <img src="https://via.placeholder.com/500" alt="Placeholder Image">
+                    <img src="../assets/images/menu/food10.jpg" alt="Placeholder Image">
                 </div>
                 <div class="gallery-image">
-                    <img src="https://via.placeholder.com/500" alt="Placeholder Image">
+                    <img src="../assets/images/menu/food12.jpg" alt="Placeholder Image">
                 </div>
                 <div class="gallery-image">
-                    <img src="https://via.placeholder.com/500" alt="Placeholder Image">
+                    <img src="../assets/images/menu/food16.jpg" alt="Placeholder Image">
                 </div>
                 <div class="gallery-image">
-                    <img src="https://via.placeholder.com/500" alt="Placeholder Image">
+                    <img src="../assets/images/menu/food20.jpg" alt="Placeholder Image">
                 </div>
                 <div class="gallery-image">
-                    <img src="https://via.placeholder.com/500" alt="Placeholder Image">
+                    <img src="../assets/images/menu/food30.jpg" alt="Placeholder Image">
                 </div>
                 <!-- Repeat this for each image -->
             </div>
@@ -188,7 +188,7 @@ header h1 {
     width: 100%;
     height: 900px; /* Set the height of the splash container */
     background-color: #160101; /* Placeholder background color */
-    background-image: url('../assets/images/splash/splash3.jpg');
+    background-image: url('../assets/images/splash/splash1.jpg');
     background-repeat: no-repeat; /* Prevent the image from repeating */
     background-size: cover; /* Cover the entire area */
     background-position: center; /* Center the image */
