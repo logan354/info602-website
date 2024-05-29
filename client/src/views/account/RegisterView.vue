@@ -1,3 +1,43 @@
+<template>
+    <Navbar />
+    <div class="splash-container">
+        <div class="container">
+            <form id="registration-form" @submit="handleSubmit">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" v-model="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" v-model="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" v-model="confirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" v-model="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" v-model="phone" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms" v-model="termsAccepted" required>
+                    <label for="terms">I agree to the <a href="/terms">terms and conditions</a></label>
+                </div>
+                <button type="submit" :disabled="loading">{{ loading ? "Registering..." : "Register" }}</button>
+                <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+            </form>
+        </div>
+        <div class="splash-text">
+            <!-- Splash text content -->
+        </div>
+    </div>
+    <Footer />
+</template>
+
 <script setup>
 import Navbar from "../../components/Navigation.vue";
 import Footer from "../../components/Footer.vue";
@@ -38,53 +78,6 @@ const handleSubmit = (event) => {
 };
 </script>
 
-<template>
-    <Navbar />
-    <!-- Splash image placeholder -->
-    <div class="splash-image-placeholder"></div>
-    <div class="container">
-        <form id="registration-form" @submit="handleSubmit">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" v-model="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" v-model="password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" v-model="confirmPassword" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" v-model="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" v-model="phone" required>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="terms" v-model="termsAccepted" required>
-                <label for="terms">I agree to the <a href="/terms">terms and conditions</a></label>
-            </div>
-            <!-- 
-            <div class="form-group">
-                <label for="captcha">Captcha:</label>
-                <div>
-                    <!-- Placeholder for a captcha widget
-                    <!-- <img src="/path/to/captcha" alt="Captcha">
-                </div>
-                <input type="text" id="captcha" name="captcha" required>
-            </div> -->
-            
-            <button type="submit" :disabled="loading">{{ loading ? "Registering..." : "Register" }}</button>
-            <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-        </form>
-    </div>
-    <Footer />
-</template>
-
 <style scoped>
 body {
     display: flex;
@@ -113,22 +106,37 @@ header h1 {
     color: #333;
 }
 
-.container {
-    width: 90%;
-    margin: 20px auto 20px;
+.splash-container {
+    position: relative;
+    width: 100%;
+    height: 900px; /* Set the height of the splash container */
+    background-color: #160101; /* Placeholder background color */
+    background-image: url('../src/assets/images/splash/splash2.jpg');
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-grow: 1;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    z-index: 1; /* Ensure the form is on top of the splash image */
 }
 
 form {
     width: 100%;
-    max-width: 400px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    background-color: #ffffff;
+    opacity: 90%;
+    margin: 0 auto; /* Center horizontally */
+    text-align: left;
 }
 
 .form-group {
@@ -178,13 +186,4 @@ button:hover:enabled {
     color: red;
     margin-top: 10px;
 }
-
-.splash-image-placeholder {
-    width: 100%;
-    height: 300px;
-    background-color: #ccc;
-}
 </style>
-
-<script>
-</script>

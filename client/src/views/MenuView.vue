@@ -9,7 +9,7 @@
     <div class="splash-image-placeholder"></div>
     <div class="container">
         <div class="menu-options">
-            <h2>Our menus change with the seasons and we have a broad menu offer to suit a variety of events. Bespoke menus can be created for special events.</h2>
+            <h2>Our menu options.</h2>
             <div class="menu-categories">
                 <div v-for="(category, index) in categories" :key="index" class="menu-category-wrapper">
                     <div v-if="expanded !== index" :class="['menu-category', expanded === index ? 'expanded' : '']">

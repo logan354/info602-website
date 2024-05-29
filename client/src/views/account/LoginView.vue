@@ -1,89 +1,78 @@
+<template>
+    <Navbar />
+    <div class="splash-container">
+        <div class="container">
+            <form id="login-form" @submit="handleSubmit">
+                <div class="form-group">
+                    <label for="username">Username or Email:</label>
+                    <input type="text" id="username" v-model="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" v-model="password" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="remember-me" v-model="rememberMe">
+                    <label for="remember-me">Remember Me</label>
+                </div>
+                <div class="form-group">
+                    <a href="/forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" :disabled="loading">{{ loading ? "Logging in..." : "Log In" }}</button>
+                <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+            </form>
+            <div class="social-login">
+                <button class="google-login" @click="loginWithGoogle">Login with Google</button>
+                <button class="facebook-login" @click="loginWithFacebook">Login with Facebook</button>
+            </div>
+        </div>
+        <div class="splash-text">
+            <!-- Splash text content -->
+        </div>
+    </div>
+    <Footer />
+</template>
+
 <script setup>
 import Navbar from "../../components/Navigation.vue";
 import Footer from "../../components/Footer.vue";
 import { ref } from "vue";
 
-const email = ref("");
+const username = ref("");
 const password = ref("");
 const rememberMe = ref(false);
 const errorMessage = ref("");
 const loading = ref(false);
-const showPassword = ref(false);
-
-const validateForm = () => {
-    if (!email.value || !password.value) {
-        errorMessage.value = "All fields are required.";
-        return false;
-    }
-    return true;
-};
 
 const handleSubmit = (event) => {
     event.preventDefault();
     if (validateForm()) {
         loading.value = true;
-        // Here you would make an API call to your backend to handle login and validation
+        // Simulate an authentication API call
         setTimeout(() => {
             loading.value = false;
             alert("Login successful!");
-            // Redirect to another page
+            // Redirect to dashboard or another page
         }, 2000);
     }
 };
 
-const togglePasswordVisibility = () => {
-    showPassword.value = !showPassword.value;
+const validateForm = () => {
+    if (!username.value || !password.value) {
+        errorMessage.value = "Please enter both username and password.";
+        return false;
+    }
+    return true;
 };
 
-function loginWithGoogle() {
-    alert('Google login not implemented yet.');
-    // Implement Google login functionality here
-}
+const loginWithGoogle = () => {
+    // Handle login with Google
+};
 
-function loginWithFacebook() {
-    alert('Facebook login not implemented yet.');
-    // Implement Facebook login functionality here
-}
+const loginWithFacebook = () => {
+    // Handle login with Facebook
+};
 </script>
-
-<template>
-    <Navbar />
-    <!-- Splash image placeholder -->
-    <div class="splash-image-placeholder"></div>
-    <div class="container">
-        <form id="login-form" @submit="handleSubmit">
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" v-model="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <div class="password-container">
-                    <input :type="showPassword ? 'text' : 'password'" id="password" v-model="password" required>
-                    <button type="button" class="show-password" @click="togglePasswordVisibility">
-                        {{ showPassword ? "Hide" : "Show" }}
-                    </button>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="remember-me" v-model="rememberMe">
-                <label for="remember-me">Remember Me</label>
-            </div>
-            <div class="form-group">
-                <a href="/password-recovery">Forgot Password?</a>
-            </div>
-            <div class="form-group">
-                <button type="submit" :disabled="loading">{{ loading ? "Logging in..." : "Login" }}</button>
-            </div>
-            <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-            <div class="social-login">
-                <button @click="loginWithGoogle">Login with Google</button>
-                <button @click="loginWithFacebook">Login with Facebook</button>
-            </div>
-        </form>
-    </div>
-    <Footer />
-</template>
 
 <style scoped>
 body {
@@ -96,31 +85,54 @@ body {
     position: relative;
 }
 
-.splash-image-placeholder {
+header {
+    background-color: #f2f2f2;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #333;
+}
+
+.splash-container {
+    position: relative;
     width: 100%;
-    height: 300px; /* Set the height of the splash image */
-    background-color: #ccc; /* Placeholder background color */
-    /* Alternatively, you can use a simple pattern as a background image */
-    /* background-image: url('path/to/pattern.png'); */
-    /* background-repeat: repeat; */
+    height: 900px; /* Set the height of the splash container */
+    background-color: #160101; /* Placeholder background color */
+    background-image: url('../src/assets/images/splash/splash4.jpg');
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
-    width: 90%;
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    z-index: 1; /* Ensure the form is on top of the splash image */
 }
 
 form {
     width: 100%;
-    max-width: 400px;
-    padding: 40px 20px; /* Add padding-top and padding-bottom */
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    background-color: #ffffff;
+    opacity: 90%;
+    margin: 0 auto; /* Center horizontally */
+    text-align: left;
 }
 
 .form-group {
@@ -132,7 +144,13 @@ label {
     font-weight: bold;
 }
 
+input[type="text"],
 input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+textarea,
+select,
 input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -142,37 +160,7 @@ input[type="password"] {
     margin-top: 5px;
 }
 
-.password-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.password-container input {
-    flex-grow: 1;
-    padding-right: 50px; /* Ensure there is space for the button inside the input */
-}
-
-.show-password {
-    position: absolute;
-    right: 10px;
-    background: none;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-    padding: 0;
-    font-size: 14px;
-}
-
-.show-password:hover {
-    color: #0056b3; /* Change color on hover */
-}
-
-.show-password:focus {
-    outline: none;
-}
-
-button[type="submit"] {
+button {
     background-color: #4caf50;
     color: white;
     padding: 10px 20px;
@@ -182,7 +170,11 @@ button[type="submit"] {
     width: 100%;
 }
 
-button[type="submit"]:hover {
+button:disabled {
+    background-color: #9e9e9e;
+}
+
+button:hover:enabled {
     background-color: #45a049;
 }
 
@@ -193,26 +185,20 @@ button[type="submit"]:hover {
 
 .social-login {
     margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
 }
 
-.social-login button {
-    background-color: #3b5998; /* Default to Facebook color */
+.google-login, .facebook-login {
+    background-color: #3b5998; /* Facebook blue */
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    flex-grow: 1;
-    margin-right: 10px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-.social-login button:last-child {
-    margin-right: 0;
-}
-
-.social-login button:hover {
-    background-color: #333;
+.facebook-login {
+    background-color: #dd4b39; /* Google red */
 }
 </style>
