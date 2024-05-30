@@ -12,10 +12,7 @@ import { RouterLink } from "vue-router";
                 <!-- Logo -->
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <RouterLink><img src="../assets/images/logos/rasai-logo.jpg" alt="Rasai"></RouterLink>
-                    <p><br /></p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam ipsum est distinctio perferendis
-                        dolores, officiis quod recusandae beatae iure? Dolor error corrupti iusto, nulla doloremque
-                        voluptate vitae ad veniam quia.</p>
+                    <p><br/></p>
                 </div>
 
                 <!-- Line break -->
