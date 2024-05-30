@@ -86,19 +86,24 @@ import { RouterLink } from "vue-router";
     text-decoration: none;
 }
 
-.navbar-nav {
-    justify-content: center;
-    text-align: center;
-}
-
 .navbar-nav li {
     padding-left: 20px;
-    padding-right: 40px;
+    padding-right: 20px;
+}
+
+.navbar-account { 
+    padding-left: 20px;
 }
 
 .router-link {
     color: black;
     text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar-brand .description {
+        display: none;
+    }
 }
 </style>
 
