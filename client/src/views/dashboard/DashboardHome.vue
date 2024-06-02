@@ -8,8 +8,6 @@ import Footer from "../../components/Footer.vue";
     <Navigation />
     <div class="side-navigation">
         <DashboardSideNavigation />
-    </div>
-    <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolores illum deserunt in a deleniti, amet
         iste consequuntur distinctio, saepe enim vel tenetur optio quis quo quod praesentium nostrum sed?
     </div>
