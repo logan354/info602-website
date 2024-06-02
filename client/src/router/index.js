@@ -9,7 +9,7 @@ import LoginView from "@/views/account/LoginView.vue";
 import RegisterView from "@/views/account/RegisterView.vue";
 
 import DashboardHome from "../views/dashboard/DashboardHome.vue";
-import DashboardReservations from "../views/dashboard/DashboardReservations.vue";
+import DashboardBookings from "../views/dashboard/DashboardBookings.vue";
 import DashboardAnalytics from "../views/dashboard/DashboardAnalytics.vue";
 
 const router = createRouter({
@@ -51,9 +51,9 @@ const router = createRouter({
       component: DashboardHome
     },
     {
-      path: "/dashboard/reservations",
-      name: "dashboard-reservations",
-      component: DashboardReservations
+      path: "/dashboard/bookings",
+      name: "dashboard-bookings",
+      component: DashboardBookings
     },
     {
       path: "/dashboard/analytics",
