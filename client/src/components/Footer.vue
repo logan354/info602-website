@@ -13,9 +13,6 @@ import { RouterLink } from "vue-router";
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <RouterLink><img src="../assets/images/logos/rasai-logo.jpg" alt="Rasai"></RouterLink>
                     <p><br /></p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam ipsum est distinctio perferendis
-                        dolores, officiis quod recusandae beatae iure? Dolor error corrupti iusto, nulla doloremque
-                        voluptate vitae ad veniam quia.</p>
                 </div>
 
                 <!-- Line break -->
@@ -62,8 +59,9 @@ import { RouterLink } from "vue-router";
                 <!-- Contact -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                    <p><i class="bi bi-envelope"></i> company@gmail.com</p>
-                    <p><i class="i bi-telephone"></i> +000 0000 0000</p>
+                    <p><i class="bi bi-house-door-fill"></i> Culinary City, FL 56789</p>
+                    <p><i class="bi bi-envelope-fill"></i> contact@rasaicatering.com</p>
+                    <p><i class="i bi-telephone-fill"></i> (123) 456-7890</p>
                 </div>
             </div>
 
@@ -76,7 +74,7 @@ import { RouterLink } from "vue-router";
                 <!-- Copyright -->
                 <div class="col-md-7 col-lg-8 text-center text-md-start">
                     <div class="p-3">
-                        <a class="text-white text-decoration-none">Copyright © 2024 Company Name</a>
+                        <a class="text-white text-decoration-none">Copyright © 2024 Rasai Catering</a>
                     </div>
                 </div>
 
@@ -84,12 +82,17 @@ import { RouterLink } from "vue-router";
                 <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
                     <!-- Facebook -->
                     <a class="btn btn-floating m-1" herf="www.facebook.com" role="button">
-                        <img src="../assets/images/socials/facebook-logo.png" height="30px">
+                        <img src="../assets/images/socials/facebook-dark.png" height="40px">
                     </a>
 
                     <!-- Instagram -->
                     <a class="btn btn-floating m-1" herf="www.instagram.com" role="button">
-                        <img src="../assets/images/socials/instagram-logo.png" height="30px">
+                        <img src="../assets/images/socials/instagram-dark.png" height="40px">
+                    </a>
+
+                    <!-- Twitter/X -->
+                    <a class="btn btn-floating m-1" herf="www.twitter.com" role="button">
+                        <img src="../assets/images/socials/twitter-dark.png" height="40px">
                     </a>
                 </div>
             </div>
