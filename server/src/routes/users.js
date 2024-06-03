@@ -13,41 +13,66 @@ const router = express.Router();
  * phone
  */
 
-// Get
-// Querys: username
+// Get [username]
 router.get("/", async (req, res) => {
-    try {
-        const usersRaw = await sequelize.model("User_Table").findAll();
+    if (req.query.username) {
+        try {
+            const usersRaw = await sequelize.model("User_Table").findAll({
+                where: {
+                    User_Table_username: req.query.username
+                }
+            });
 
-        if (!usersRaw) {
-            return res.status(204).json([]);
+            if (!usersRaw) {
+                return res.status(204).json([]);
+            }
+
+            const users = usersRaw.map((x) => x.dataValues);
+
+            res.status(200).json(users);
         }
-
-        const users = usersRaw.map((x) => x.dataValues);
-
-        res.status(200).json(users);
+        catch (e) {
+            res.status(500).send(e.message);
+        }
     }
-    catch (e) {
-        res.status(500).send(e.message);
+    else {
+        try {
+            const usersRaw = await sequelize.model("User_Table").findAll();
+
+            if (!usersRaw) {
+                return res.status(204).json([]);
+            }
+
+            const users = usersRaw.map((x) => x.dataValues);
+
+            res.status(200).json(users);
+        }
+        catch (e) {
+            res.status(500).send(e.message);
+        }
     }
 });
 
-// Get (by id)
-router.get("/:username", async (req, res) => {
+// Get <id>
+router.get("/:id", async (req, res) => {
+    if (isNaN(parseInt(req.params.id))) {
+        return res.sendStatus(400);
+    }
+    
     try {
-        const usersRaw = await sequelize.model("User_Table").findAll({
+        const userRaw = await sequelize.model("User_Table").findOne({
             where: {
-                User_Table_username: req.params.username
+                User_Table_id: req.params.id
             }
         });
 
-        if (!usersRaw) {
+        if (!userRaw) {
             return res.sendStatus(400);
         }
 
-        const users = usersRaw.map((x) => x.dataValues);
+        const user = userRaw.dataValues;
 
-        res.status(200).json(users);
+        res.status(200).json(user);
     }
     catch (e) {
         res.status(500).send(e.message);
@@ -59,7 +84,7 @@ router.post("/", async (req, res) => {
     const user = req.body.user;
 
     if (!user) {
-        return res.sendStatus(400);
+        return res.status(400);
     }
 
     try {
@@ -71,9 +96,11 @@ router.post("/", async (req, res) => {
             User_Table_email: user.email,
             User_Table_phone: user.phone
         });
+
+        res.status(201);
     }
     catch (e) {
-        res.status(500).send(e.message);
+        res.status(500);
     }
 });
 

@@ -2,7 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-// Get (all)
+// Get
 router.get("/", (req, res) => {
     res.sendStatus(200);
 });

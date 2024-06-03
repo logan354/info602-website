@@ -5,12 +5,21 @@ const router = express.Router();
 
 /**
  * Booking Object
+ * userId
+ * bookingType
  * createdAt
  * date
  * location
  * guests
  * notes
  * status
+ */
+
+/**
+ * Booking.status
+ * PENDING
+ * OPEN
+ * CLOSED
  */
 
 /**
@@ -41,42 +50,8 @@ router.get("/", async (req, res) => {
         const bookings = [];
 
         for (let i = 0; i < bookingsRaw.length; i++) {
-            const fullBooking = {}
-            
-            const booking = bookingsRaw[i].dataValues;
-            fullBooking.booking = booking;
-
-            // Booking Type Foregin Key
-            const bookingTypeRaw = await sequelize.model("Booking_Type_Table").findOne({
-                where: {
-                    Booking_Type_Table_id: booking.Booking_Type_Table_id
-                }
-            });
-
-            const bookingType = bookingTypeRaw.dataValues;
-            fullBooking.bookingType = bookingType;
-
-            // User Foregin Key
-            const userRaw = await sequelize.model("User_Table").findOne({
-                where: {
-                    User_Table_id: booking.User_Table_id
-                }
-            });
-
-            const user = userRaw.dataValues;
-            fullBooking.user = user;
-
-            // Menu's Many to Many Relation
-            const menusRaw = await sequelize.model("Booking_Menu_Table").findAll({
-                where: {
-                    Booking_Table_id: booking.Booking_Table_id
-                }
-            });
-
-            const menus = menusRaw.map((x) => x.dataValues);
-            fullBooking.menus = menus;
-
-            bookings.push(fullBooking)
+            const booking = await getFullBooking(bookingsRaw[i].dataValues);
+            bookings.push(booking);
         }
 
         res.status(200).json(bookings);
@@ -86,20 +61,26 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Get (by id)
+// Get <id>
 router.get("/:id", async (req, res) => {
+    if (isNaN(parseInt(req.params.id))) {
+        return res.sendStatus(400);
+    }
+
     try {
-        const usersRaw = await sequelize.model("User_Table").findAll({
-            where: { User_Table_username: req.params.username }
+        const bookingRaw = await sequelize.model("Booking_Table").findOne({
+            where: {
+                Booking_Table_id: req.params.id
+            }
         });
 
-        if (!usersRaw) {
+        if (!bookingRaw) {
             return res.sendStatus(400);
         }
 
-        const users = usersRaw.map((x) => x.dataValues);
+        const booking = await getFullBooking(bookingRaw.dataValues);
 
-        res.status(200).json(users);
+        res.status(200).json(booking);
     }
     catch (e) {
         res.status(500).send(e.message);
@@ -108,31 +89,98 @@ router.get("/:id", async (req, res) => {
 
 // Create
 router.post("/", async (req, res) => {
-    const user = req.body.user;
+    const booking = req.body.booking;
+    const menuIds = req.body.menuIds;
 
-    if (!user) {
-        return res.sendStatus(400);
+    if (!booking || !menus) {
+        return res.status(400);
     }
 
     try {
-        await sequelize.model("User_Table").create({
-            User_Table_username: user.username,
-            User_Table_password: user.password,
-            User_Table_firstName: user.firstName,
-            User_Table_lastName: user.lastName,
-            User_Table_email: user.email,
-            User_Table_phone: user.phone
+        const bookingRaw = await sequelize.model("Booking_Table").create({
+            User_Table_id: booking.userId,
+            Booking_Type_Table_id: booking.bookingTypeId,
+            Booking_Table_createdAt: new Date().toJSON(),
+            Booking_Table_date: booking.date,
+            Booking_Table_location: booking.location,
+            Booking_Table_guests: booking.guests,
+            Booking_Table_notes: booking.notes,
+            Booking_Table_status: "PENDING"
         });
+
+        for (let i = 0; i < menuIds; i++) {
+            await sequelize.model("Booking_Menu_Table").create({
+                Booking_Table_id: bookingRaw.dataValues.Booking_Table_id,
+                Menu_Table_id: menuIds[i].Menu_Table_ids
+            });
+        }
+
+        res.status(201);
     }
     catch (e) {
-        res.status(500).send(e.message);
+        res.status(500);
     }
 });
 
 // Update
-// This functionality is not built into the website
+
 
 // Delete
-// This functionality is not built into the website
+// This functionality is not needed
+
+async function getFullBooking(booking) {
+    const fullBooking = {}
+
+    // Booking
+    fullBooking.booking = booking;
+
+    // Booking Type Foregin Key
+    const bookingTypeRaw = await sequelize.model("Booking_Type_Table").findOne({
+        where: {
+            Booking_Type_Table_id: booking.Booking_Type_Table_id
+        }
+    });
+
+    const bookingType = bookingTypeRaw.dataValues;
+    fullBooking.bookingType = bookingType;
+
+    // User Foregin Key
+    const userRaw = await sequelize.model("User_Table").findOne({
+        where: {
+            User_Table_id: booking.User_Table_id
+        }
+    });
+
+    const user = userRaw.dataValues;
+    fullBooking.user = user;
+
+    // Menu Many to Many Relation
+    // Booking Menu
+    const bookingMenusRaw = await sequelize.model("Booking_Menu_Table").findAll({
+        where: {
+            Booking_Table_id: booking.Booking_Table_id
+        }
+    });
+
+    const bookingMenus = bookingMenusRaw.map((x) => x.dataValues);
+
+    // Menu
+    const menus = [];
+
+    for (let i = 0; i < bookingMenus.length; i++) {
+        const menuRaw = await sequelize.model("Menu_Table").findOne({
+            where: {
+                Menu_Table_id: bookingMenus[i].Menu_Table_id
+            }
+        });
+
+        const menu = menuRaw.dataValues;
+        menus.push(menu);
+    }
+
+    fullBooking.menus = menus;
+
+    return fullBooking;
+}
 
 export default router;
