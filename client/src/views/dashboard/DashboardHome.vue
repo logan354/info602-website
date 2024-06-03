@@ -8,8 +8,9 @@ import Footer from "../../components/Footer.vue";
     <Navigation />
     <div class="side-navigation">
         <DashboardSideNavigation />
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolores illum deserunt in a deleniti, amet
-        iste consequuntur distinctio, saepe enim vel tenetur optio quis quo quod praesentium nostrum sed?
+        <div class="container">
+            HOME DASHBOARD HERE
+        </div>
     </div>
     <Footer />
 </template>
@@ -18,10 +19,9 @@ import Footer from "../../components/Footer.vue";
 .side-navigation {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    height: 100vh;
-    width: 100vw;
 }
 </style>
 
 <script>
+
 </script>

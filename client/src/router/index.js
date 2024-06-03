@@ -7,6 +7,7 @@ import AboutView from "../views/AboutView.vue";
 
 import LoginView from "@/views/account/LoginView.vue";
 import RegisterView from "@/views/account/RegisterView.vue";
+import AccountView from "@/views/account/AccountView.vue";
 
 import DashboardHome from "../views/dashboard/DashboardHome.vue";
 import DashboardBookings from "../views/dashboard/DashboardBookings.vue";
@@ -44,6 +45,11 @@ const router = createRouter({
       path: "/register",
       name: "register",
       component: RegisterView
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: AccountView
     },
     {
       path: "/dashboard/home",
