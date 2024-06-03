@@ -6,40 +6,78 @@ import Footer from "../components/Footer.vue";
 <template>
     <Navbar />
     <div class="container">
+        <div class="contact-info-wrapper">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p><strong>Rasai Catering</strong></p>
+                <p>1234 Catering Street</p>
+                <p>Culinary City, FL 56789</p>
+                <p>Email: contact@rasaicatering.com</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Follow us on social media:</p>
+            </div>
+            <div class="social-media">
+                <!-- Social Links -->
+                <a class="btn btn-floating" href="https://www.facebook.com" role="button">
+                    <img src="../assets/images/socials/facebook-dark.png" height="40px">
+                </a>
+                <a class="btn btn-floating" href="https://www.instagram.com" role="button">
+                    <img src="../assets/images/socials/instagram-dark.png" height="40px">
+                </a>
+                <a class="btn btn-floating" href="https://www.twitter.com" role="button">
+                    <img src="../assets/images/socials/twitter-dark.png" height="40px">
+                </a>
+            </div>
+        </div>
         <form id="booking-form" action="submit_booking.php" method="POST">
             <div class="form-group">
-                <label for="event-date">Event Date:</label>
-                <input type="date" id="event-date" name="event_date" required>
-            </div>
-            <div class="form-group">
-                <label for="event-time">Event Time:</label>
-                <input type="time" id="event-time" name="event_time" required>
-            </div>
-            <div class="form-group">
-                <label for="event-type">Type of Event:</label>
-                <select id="event-type" name="event_type" required>
-                    <option value="">Select Event Type</option>
-                    <option value="wedding">Wedding</option>
-                    <option value="corporate">Corporate Event</option>
-                    <option value="birthday">Birthday Party</option>
-                    <option value="other">Other</option>
+                <label for="booking-type-id">Booking Type (Required):</label>
+                <select id="booking-type-id" name="booking_type_id" required>
+                    <option value="">Select Booking Type</option>
+                    <option value="1">Wedding</option>
+                    <option value="2">Corporate Event</option>
+                    <option value="3">Birthday Party</option>
+                    <option value="4">Other</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="event-location">Event Location:</label>
-                <input type="text" id="event-location" name="event_location" required>
+                <label for="menu-option-id">Menu Option (Required):</label>
+                <select id="menu-option-id" name="menu-option_id" required>
+                    <option value="">Select Menu Option</option>
+                    <option value="1">The Village Menu</option>
+                    <option value="2">The Hungry Lankan</option>
+                    <option value="3">Traditional Yellow Rice</option>
+                    <option value="4">Speciality Biriyani</option>
+                    <option value="5">Solely Vegetarian</option>
+                    <option value="6">Dutch Lamprais</option>
+                    <option value="7">String Hopper Menu</option>
+                    <option value="8">Roti Menu</option>
+                    <option value="9">Coconut Milk Rice</option>
+                    <option value="10">Finger Food Palette</option>
+                    <option value="11">Speciality Dishes</option>
+                    <option value="12">Desserts</option>
+                    <option value="13">Other</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="emergency-contact">Emergency Contact Number:</label>
-                <input type="tel" id="emergency-contact" name="emergency_contact" required>
+                <label for="menu_desc">Menu Alterations (If Applicable):</label>
+                <textarea id="menu_desc" name="menu_desc" rows="5" maxlength="280" required></textarea>
             </div>
             <div class="form-group">
-                <label for="guests">Number of Guests:</label>
+                <label for="booking-date">Booking Date (Required):</label>
+                <input type="date" id="booking-date" name="booking_date" required>
+            </div>
+            <div class="form-group">
+                <label for="booking-location">Event Location (If Applicable):</label>
+                <input type="text" id="booking-location" name="booking_location" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">Number of Guests (Required):</label>
                 <input type="number" id="guests" name="guests" required>
             </div>
             <div class="form-group">
-                <label for="details">Event Details:</label>
-                <textarea id="details" name="details" rows="5" required></textarea>
+                <label for="notes">Event Details (If Applicable):</label>
+                <textarea id="notes" name="notes" rows="5" maxlength="280" required></textarea>
             </div>
             <button type="submit">Submit Booking</button>
         </form>
@@ -77,22 +115,43 @@ header h1 {
 
 .container {
     width: 90%;
-    /* Adjust the width as needed */
-    margin: 20px auto 20px;
-    /* Added margin for spacing */
+    margin: 100px auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     flex-grow: 1;
+}
+
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.contact-info {
+    margin-top: 0;
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+.contact-info h2 {
+    margin-top: 0;
+}
+
+.social-media {
+    display: flex;
+    margin-top: auto; /* Pushes the social media buttons to the bottom */
+    margin-left: 40px;
 }
 
 form {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     box-sizing: border-box;
+    background-color: #fff;
+    flex: 1;
 }
 
 .form-group {
@@ -117,7 +176,6 @@ select {
     border-radius: 5px;
     box-sizing: border-box;
     margin-top: 5px;
-    /* Added margin for spacing */
 }
 
 button {
@@ -134,6 +192,3 @@ button:hover {
     background-color: #45a049;
 }
 </style>
-
-<script>
-</script>
