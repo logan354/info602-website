@@ -38,7 +38,7 @@ export default (sequelize) => {
             type: DataTypes.STRING(280)
         },
         Booking_Table_status: {
-            typ: DataTypes.STRING(50)
+            type: DataTypes.STRING(50)
         }
     },
     {

@@ -32,7 +32,7 @@ CREATE TABLE Booking_Table(
 Booking_Table_id INT IDENTITY(1,1) PRIMARY KEY,
 User_Table_id INT,
 Booking_Type_Table_id INT,
-Booking_Table_createdAt date
+Booking_Table_createdAt date,
 Booking_Table_date date,
 Booking_Table_location VARCHAR(50),
 Booking_Table_guests INT,
