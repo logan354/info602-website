@@ -3,6 +3,7 @@ import express from "express";
 
 import sequelize from "./database/database.js";
 
+import apiRouter from "./routes/api.js";
 import usersRouter from "./routes/users.js";
 import bookingsRouter from "./routes/bookings.js";
 import menuRouter from "./routes/menu.js";
@@ -28,9 +29,11 @@ const port = process.env.SERVER_PORT;
 
 app.use(express.json());
 
-app.use("/users", usersRouter);
-app.use("/menu", menuRouter);
-app.use("/bookings", bookingsRouter);
+app.use("/api", apiRouter);
+
+app.use("/api/users", usersRouter);
+app.use("/api/menu", menuRouter);
+app.use("/api/bookings", bookingsRouter);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
