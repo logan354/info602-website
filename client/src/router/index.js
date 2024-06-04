@@ -4,9 +4,14 @@ import HomeView from "../views/HomeView.vue";
 import MenuView from "@/views/MenuView.vue";
 import ContactUsView from "@/views/ContactUsView.vue";
 import AboutView from "../views/AboutView.vue";
+
 import LoginView from "@/views/account/LoginView.vue";
 import RegisterView from "@/views/account/RegisterView.vue";
-import DashboardView from "@/views/dashboard/DashboardView.vue";
+import AccountView from "@/views/account/AccountView.vue";
+
+import DashboardHome from "../views/dashboard/DashboardHome.vue";
+import DashboardBookings from "../views/dashboard/DashboardBookings.vue";
+import DashboardAnalytics from "../views/dashboard/DashboardAnalytics.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,9 +47,24 @@ const router = createRouter({
       component: RegisterView
     },
     {
-      path: "/dashboard",
-      name: "dashboard",
-      component: DashboardView
+      path: "/account",
+      name: "account",
+      component: AccountView
+    },
+    {
+      path: "/dashboard/home",
+      name: "dashboard-home",
+      component: DashboardHome
+    },
+    {
+      path: "/dashboard/bookings",
+      name: "dashboard-bookings",
+      component: DashboardBookings
+    },
+    {
+      path: "/dashboard/analytics",
+      name: "dashboard-analytics",
+      component: DashboardAnalytics
     }
   ]
 });
