@@ -11,7 +11,7 @@ import { RouterLink } from "vue-router";
                 <RouterLink class="router-link" to="/">
                     <img src="../assets/images/logos/rasai-logo.jpg" alt="Logo" width="100" class="d-inline-block">
                 </RouterLink>
-                <a class="description">&nbsp&nbsp&nbspAuthentic Sri Lankan Catering</a>
+                <a class="description">&nbsp;&nbsp;&nbsp;Authentic Sri Lankan Catering</a>
             </a>
 
             <!-- Toggler -->
