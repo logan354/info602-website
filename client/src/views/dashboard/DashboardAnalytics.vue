@@ -19,7 +19,7 @@ import Footer from "../../components/Footer.vue";
             </div>
             <loading-spinner v-if="isLoading" />
             <div class="iframe-wrapper" v-if="!isLoading">
-                <iframe title="Main_Connection_2" src="https://app.powerbi.com/reportEmbed?reportId=ec7699ab-28cb-4ea1-a515-7b78dfa685dd&autoAuth=true&ctid=f7bae8e1-a04b-4f86-9377-8eb84875e0a2" frameborder="0" allowFullScreen="true"></iframe>
+                <iframe title="Main_Connection_3" src="https://app.powerbi.com/reportEmbed?reportId=0384868a-6dcf-4d5d-b63d-d2d4688dadf8&autoAuth=true&ctid=f7bae8e1-a04b-4f86-9377-8eb84875e0a2" frameborder="0" allowFullScreen="true"></iframe>
             </div>
         </div>
     </div>
