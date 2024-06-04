@@ -37,7 +37,9 @@ import Footer from "../components/Footer.vue";
                     <option value="1">Wedding</option>
                     <option value="2">Corporate Event</option>
                     <option value="3">Birthday Party</option>
-                    <option value="4">Other</option>
+                    <option value="4">Conference</option>
+                    <option value="5">Private Dinner</option>
+                    <option value="6">Other</option>
                 </select>
             </div>
             <div class="form-group">
@@ -58,10 +60,6 @@ import Footer from "../components/Footer.vue";
                     <option value="12">Desserts</option>
                     <option value="13">Other</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="menu_desc">Menu Alterations (If Applicable):</label>
-                <textarea id="menu_desc" name="menu_desc" rows="5" maxlength="280" required></textarea>
             </div>
             <div class="form-group">
                 <label for="booking-date">Booking Date (Required):</label>
