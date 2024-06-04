@@ -3,16 +3,15 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-light py-4">
+        <div class="container">
 
             <!-- Logo -->
             <a class="navbar-brand">
                 <RouterLink class="router-link" to="/">
-                    <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30"
-                        height="24" class="d-inline-block align-text-top">
-                    Bootstrap
+                    <img src="../assets/images/logos/rasai-logo.jpg" alt="Logo" width="100" class="d-inline-block">
                 </RouterLink>
+                <a class="description">&nbsp;&nbsp;&nbsp;Authentic Sri Lankan Catering</a>
             </a>
 
             <!-- Toggler -->
@@ -37,9 +36,7 @@ import { RouterLink } from "vue-router";
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">
-                            <button type="button" class="btn btn-success">
-                                <RouterLink class="router-link" to="/contact-us">Contact Us</RouterLink>
-                            </button>
+                            <RouterLink class="router-link" to="/contact-us">Contact Us</RouterLink>
                         </a>
                     </li>
                 </ul>
@@ -48,9 +45,9 @@ import { RouterLink } from "vue-router";
                     <div v-if="!account">
                         <!-- Account login and register options-->
                         <a class="nav-link">
-                            <RouterLink class="router-link" to="/login">Login</RouterLink>
-                            <a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp</a>
-                            <RouterLink class="router-link" to="/register">Register</RouterLink>
+                            <i class="bi bi-person-circle"></i>&nbsp;<RouterLink class="router-link" to="/login">Login</RouterLink>
+                            <a>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                            <i class="bi bi-person-circle"></i>&nbsp;<RouterLink class="router-link" to="/register">Register</RouterLink>
                         </a>
                     </div>
                     <div v-else>
@@ -58,19 +55,18 @@ import { RouterLink } from "vue-router";
                         <div class="dropdown">
                             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="" width="32" height="32"
+                                <img src="../assets//images/profile/profile-placeholder.jpg" alt="" width="32" height="32"
                                     class="rounded-circle me-2">
-                                <strong style="color: black;">mdo</strong>
+                                <strong style="color: black;">ACCOUNT HERE</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow"
                                 aria-labelledby="dropdownUser1">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item"><RouterLink class="router-link" to="/dashboard/home">Dashboard</RouterLink></a></li>
+                                <li><a class="dropdown-item"><RouterLink class="router-link" to="/account">My Account</RouterLink></a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                <li><a class="dropdown-item"><i class="bi bi-box-arrow-in-right"></i>&nbsp;Sign out</a></li>
                             </ul>
                         </div>
                     </div>
@@ -81,24 +77,43 @@ import { RouterLink } from "vue-router";
 </template>
 
 <style scoped>
-.navbar-brand {
-    padding-left: 20px;
-    padding-right: 0px;
+.navbar-brand .description {
+    color: #ed1b34;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-decoration: none;
 }
 
 .navbar-nav li {
     padding-left: 20px;
-    padding-right: 40px;
+    padding-right: 20px;
 }
 
 .navbar-account {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 20px;
+    padding-right: 40px;
 }
 
-.router-link {
+.navbar-brand .router-link {
     color: black;
     text-decoration: none;
+}
+
+.nav-link .router-link {
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown-item .router-link {
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar-brand .description {
+        display: none;
+    }
 }
 </style>
 
@@ -106,7 +121,7 @@ import { RouterLink } from "vue-router";
 export default {
     data() {
         return {
-            account: 1
+            account: null
         }
     }
 }
