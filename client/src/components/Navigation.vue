@@ -3,16 +3,15 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-light py-4">
+        <div class="container">
 
             <!-- Logo -->
             <a class="navbar-brand">
                 <RouterLink class="router-link" to="/">
-                    <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30"
-                        height="24" class="d-inline-block align-text-top">
-                    Bootstrap
+                    <img src="../assets/images/logos/rasai-logo.jpg" alt="Logo" width="100" class="d-inline-block">
                 </RouterLink>
+                <a class="description">&nbsp;&nbsp;&nbsp;Authentic Sri Lankan Catering</a>
             </a>
 
             <!-- Toggler -->
@@ -37,9 +36,7 @@ import { RouterLink } from "vue-router";
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">
-                            <button type="button" class="btn btn-success">
-                                <RouterLink class="router-link" to="/contact-us">Contact Us</RouterLink>
-                            </button>
+                            <RouterLink class="router-link" to="/contact-us">Contact Us</RouterLink>
                         </a>
                     </li>
                 </ul>
@@ -81,24 +78,32 @@ import { RouterLink } from "vue-router";
 </template>
 
 <style scoped>
-.navbar-brand {
-    padding-left: 20px;
-    padding-right: 0px;
+.navbar-brand .description {
+    color: #ed1b34;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-decoration: none;
 }
 
 .navbar-nav li {
     padding-left: 20px;
-    padding-right: 40px;
+    padding-right: 20px;
 }
 
-.navbar-account {
-    padding-left: 50px;
-    padding-right: 50px;
+.navbar-account { 
+    padding-left: 20px;
 }
 
 .router-link {
     color: black;
     text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar-brand .description {
+        display: none;
+    }
 }
 </style>
 
