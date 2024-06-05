@@ -1,6 +1,80 @@
 <script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import Navbar from "../components/Navigation.vue";
 import Footer from "../components/Footer.vue";
+import { store } from "@/store";
+import { apiURL } from "@/api";
+
+
+const router = useRouter();
+
+const booking_type_id = ref("");
+const menu_ids = ref("");
+const date = ref("");
+const location = ref("");
+const guests = ref("");
+const notes = ref("");
+const loading = ref(false);
+
+const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (validateForm()) {
+        loading.value = true;
+
+        // Small error checking
+        const booking = {
+            user_id: store.user.User_Table_id,
+            booking_type_id: booking_type_id.value === 0 ? 1 : booking_type_id.value,
+            date: date.value,
+            location: location.value,
+            guests: guests.value,
+            notes: notes.value,
+            menu_ids: menu_ids.value.includes(0) || menu_ids.value.includes("0") ? [0] : menu_ids.value
+        }
+
+        try {
+            const res = await fetch(apiURL + "/bookings", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ booking: booking })
+            });
+
+            if (res.status !== 200) {
+                loading.value = false;
+
+                alert("Booking failed!\nServer Error");
+                return;
+            }
+        }
+        catch (e) {
+            loading.value = false;
+            alert("Booking failed!\n" + e.message);
+            return;
+        }
+
+        loading.value = false;
+        alert("Booking successful!");
+        clearForm();
+    }
+}
+
+const validateForm = () => {
+    // Out of time and not my job
+    return true;
+}
+
+const clearForm = () => {
+    booking_type_id.value = 0,
+    menu_ids.value = [0],
+    date.value = ""
+    location.value = ""
+    guests.value = ""
+    notes.value = ""
+}
 </script>
 
 <template>
@@ -29,11 +103,11 @@ import Footer from "../components/Footer.vue";
                 </a>
             </div>
         </div>
-        <form id="booking-form" action="submit_booking.php" method="POST">
+        <form id="booking-form" @submit="handleSubmit">
             <div class="form-group">
                 <label for="booking-type-id">Booking Type (Required):</label>
-                <select id="booking-type-id" name="booking_type_id" required>
-                    <option value="">Select Booking Type</option>
+                <select id="booking-type-id" name="booking_type_id" v-model="booking_type_id" required>
+                    <option value="0">Select Booking Type</option>
                     <option value="1">Wedding</option>
                     <option value="2">Corporate Event</option>
                     <option value="3">Birthday Party</option>
@@ -44,8 +118,8 @@ import Footer from "../components/Footer.vue";
             </div>
             <div class="form-group">
                 <label for="menu-option-id">Menu Option (Required):</label>
-                <select id="menu-option-id" name="menu-option_id" required>
-                    <option value="">Select Menu Option</option>
+                <select id="menu-option-id" name="menu-option_id" v-model="menu_ids" multiple required>
+                    <option value="0">Select Menu Option</option>
                     <option value="1">The Village Menu</option>
                     <option value="2">The Hungry Lankan</option>
                     <option value="3">Traditional Yellow Rice</option>
@@ -63,21 +137,21 @@ import Footer from "../components/Footer.vue";
             </div>
             <div class="form-group">
                 <label for="booking-date">Booking Date (Required):</label>
-                <input type="date" id="booking-date" name="booking_date" required>
+                <input type="date" id="booking-date" name="booking_date" v-model="date" required>
             </div>
             <div class="form-group">
                 <label for="booking-location">Event Location (If Applicable):</label>
-                <input type="text" id="booking-location" name="booking_location" required>
+                <input type="text" id="booking-location" name="booking_location" v-model="location" required>
             </div>
             <div class="form-group">
                 <label for="guests">Number of Guests (Required):</label>
-                <input type="number" id="guests" name="guests" required>
+                <input type="number" id="guests" name="guests" v-model="guests" required>
             </div>
             <div class="form-group">
                 <label for="notes">Event Details (If Applicable):</label>
-                <textarea id="notes" name="notes" rows="5" maxlength="280" required></textarea>
+                <textarea id="notes" name="notes" rows="5" maxlength="280" v-model="notes"></textarea>
             </div>
-            <button type="submit">Submit Booking</button>
+            <button type="submit" :disabled="loading">{{ loading ? "Submitting Booking..." : "Submit Booking" }}</button>
         </form>
     </div>
     <Footer />
@@ -139,7 +213,8 @@ header h1 {
 
 .social-media {
     display: flex;
-    margin-top: auto; /* Pushes the social media buttons to the bottom */
+    margin-top: auto;
+    /* Pushes the social media buttons to the bottom */
     margin-left: 40px;
 }
 
@@ -190,3 +265,6 @@ button:hover {
     background-color: #45a049;
 }
 </style>
+
+<script>
+</script>
