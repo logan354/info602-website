@@ -36,7 +36,7 @@ GO
 Select * from Menu_Table;
 GO
 
-INSERT INTO Booking_Type_Table (Booking_Type_name)
+INSERT INTO Booking_Type_Table (Booking_Type_Table_name)
 VALUES
 ('Wedding'),
 ('Corporate Event'),
