@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { store } from "../store/index.js";
 </script>
 
 <template>
@@ -26,28 +27,30 @@ import { RouterLink } from "vue-router";
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link">
-                            <RouterLink class="router-link" to="/menu">Menu</RouterLink>
+                            <RouterLink class="router-link" to="/menu"><strong>Menu</strong></RouterLink>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">
-                            <RouterLink class="router-link" to="/about">About</RouterLink>
+                            <RouterLink class="router-link" to="/about"><strong>About</strong></RouterLink>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">
-                            <RouterLink class="router-link" to="/contact-us">Contact Us</RouterLink>
+                            <RouterLink class="router-link" to="/contact-us"><strong>Contact Us</strong></RouterLink>
                         </a>
                     </li>
                 </ul>
 
                 <div class="navbar-account">
-                    <div v-if="!account">
+                    <div v-if="!store.account">
                         <!-- Account login and register options-->
                         <a class="nav-link">
-                            <i class="bi bi-person-circle"></i>&nbsp;<RouterLink class="router-link" to="/login">Login</RouterLink>
-                            <a>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
-                            <i class="bi bi-person-circle"></i>&nbsp;<RouterLink class="router-link" to="/register">Register</RouterLink>
+                            <i class="bi bi-person-circle"></i>&nbsp;<RouterLink class="router-link" to="/login">Login
+                            </RouterLink>
+                            <a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</a>
+                            <i class="bi bi-person-circle"></i>&nbsp;<RouterLink class="router-link" to="/register">
+                                Register</RouterLink>
                         </a>
                     </div>
                     <div v-else>
@@ -55,18 +58,35 @@ import { RouterLink } from "vue-router";
                         <div class="dropdown">
                             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets//images/profile/profile-placeholder.jpg" alt="" width="32" height="32"
-                                    class="rounded-circle me-2">
-                                <strong style="color: black;">ACCOUNT HERE</strong>
+                                <img src="../assets//images/profile/profile-placeholder.jpg" alt="" width="32"
+                                    height="32" class="rounded-circle me-2">
+                                <strong style="color: #222121">{{ store.account.username }}</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow"
                                 aria-labelledby="dropdownUser1">
-                                <li><a class="dropdown-item"><RouterLink class="router-link" to="/dashboard/home">Dashboard</RouterLink></a></li>
-                                <li><a class="dropdown-item"><RouterLink class="router-link" to="/account">My Account</RouterLink></a></li>
+
+                                <!-- Client Dashboard not Added -->
+                                <div v-if="!isAdmin">
+                                    <li><a class="dropdown-item disabled">
+                                            <RouterLink class="router-link" to="/dashboard/home">Dashboard</RouterLink>
+                                        </a></li>
+                                </div>
+                                <div v-else>
+                                    <li><a class="dropdown-item">
+                                            <RouterLink class="router-link" to="/dashboard/home">Dashboard</RouterLink>
+                                        </a></li>
+                                </div>
+                                <li><a class="dropdown-item">
+                                        <RouterLink class="router-link" to="/account">My Account</RouterLink>
+                                    </a></li>
+
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item"><i class="bi bi-box-arrow-in-right"></i>&nbsp;Sign out</a></li>
+                                <!-- Make href so mouse cursor changes -->
+                                <li><a href="" class="dropdown-item" @click.prevent="handleSignOut">
+                                        <i class="bi bi-box-arrow-in-right"></i>&nbsp;Sign out</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -90,19 +110,14 @@ import { RouterLink } from "vue-router";
     padding-right: 20px;
 }
 
+.nav-link .router-link {
+    color: #222121;
+    text-decoration: none;
+}
+
 .navbar-account {
     padding-left: 20px;
     padding-right: 40px;
-}
-
-.navbar-brand .router-link {
-    color: black;
-    text-decoration: none;
-}
-
-.nav-link .router-link {
-    color: black;
-    text-decoration: none;
 }
 
 .dropdown-item .router-link {
@@ -119,9 +134,13 @@ import { RouterLink } from "vue-router";
 
 <script>
 export default {
-    data() {
-        return {
-            account: null
+    methods: {
+        isAdmin() {
+            if (store.account.role !== 1) return false;
+            else return true;
+        },
+        handleSignOut() {
+            store.account = null;
         }
     }
 }
