@@ -4,12 +4,14 @@ import sequelize from "../database/database.js";
 const router = express.Router();
 
 /**
- * Menu Object
+ * Request Objects
+ * 
+ * Menu
  * name
  * description
  */
 
-// Get [name]
+// GET /?name
 router.get("/", async (req, res) => {
     if (req.query.name) {
         try {
@@ -49,7 +51,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Get <id>
+// GET /:id
 router.get("/:id", async (req, res) => {
     if (isNaN(parseInt(req.params.id))) {
         return res.sendStatus(400);
@@ -75,13 +77,13 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// Create
+// POST
 // This functionality is not needed
 
-// Update
+// PUT
 // This functionality is not needed
 
-// Delete
+// DELETE
 // This functionality is not needed
 
 export default router;

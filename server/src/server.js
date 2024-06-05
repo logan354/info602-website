@@ -29,6 +29,30 @@ const port = process.env.SERVER_PORT;
 
 app.use(express.json());
 
+/**
+ * Routes
+ * Base: localhost:3000/api
+ * 
+ * GET
+ * /users
+ * /users/:id
+ * /menus
+ * /menus/:id
+ * /bookings/
+ * /bookings/:id
+ * /bookings/bookingTypes
+ * /bookings/bookingTypes/:id
+ * 
+ * POST
+ * /users
+ * /bookings
+ * 
+ * PUT
+ * /bookings/:id
+ * 
+ * DELETE
+ */
+
 app.use("/api", apiRouter);
 
 app.use("/api/users", usersRouter);

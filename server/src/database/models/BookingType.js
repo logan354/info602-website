@@ -8,8 +8,7 @@ export default (sequelize) => {
                 autoIncrement: true,
                 primaryKey: true
             },
-            // FIX
-            Booking_Type_name: {
+            Booking_Type_Table_name: {
                 type: DataTypes.STRING(30)
             }
         },

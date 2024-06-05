@@ -4,16 +4,18 @@ import sequelize from "../database/database.js";
 const router = express.Router();
 
 /**
- * User Object
+ * Request Objects
+ * 
+ * User
  * username
  * password
- * firstName
- * lastName
+ * first_name
+ * last_name
  * email
  * phone
  */
 
-// Get [username]
+// GET /?username
 router.get("/", async (req, res) => {
     if (req.query.username) {
         try {
@@ -53,7 +55,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Get <id>
+// GET /:id
 router.get("/:id", async (req, res) => {
     if (isNaN(parseInt(req.params.id))) {
         return res.sendStatus(400);
@@ -79,35 +81,35 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// Create
+// POST /
 router.post("/", async (req, res) => {
     const user = req.body.user;
 
     if (!user) {
-        return res.status(400);
+        return res.sendStatus(400);
     }
 
     try {
         await sequelize.model("User_Table").create({
             User_Table_username: user.username,
             User_Table_password: user.password,
-            User_Table_firstName: user.firstName,
-            User_Table_lastName: user.lastName,
+            User_Table_firstName: user.first_name,
+            User_Table_lastName: user.last_name,
             User_Table_email: user.email,
             User_Table_phone: user.phone
         });
 
-        res.status(201);
+        res.sendStatus(200);
     }
     catch (e) {
-        res.status(500);
+        res.status(500).send(e.message);
     }
 });
 
-// Update
+// PUT
 // This functionality is not needed
 
-// Delete
+// DELETE
 // This functionality is not needed
 
 export default router;
