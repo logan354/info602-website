@@ -14,16 +14,16 @@ import Footer from "../../components/Footer.vue";
             <h2 class="report-title">Analytics</h2>
             <div class="controls">
                 <!-- Example control, add as needed -->
-                <label for="date-range">Date Range:</label>
-                <input type="date" id="start-date">
-                <input type="date" id="end-date">
+                <label for="date-range">Date Range:&nbsp;</label>
+                <input type="date" id="start-date">&nbsp;
+                <input type="date" id="end-date">&nbsp;
                 <button @click="applyFilters">Apply</button>
             </div>
             <loading-spinner v-if="isLoading" />
             <div class="iframe-wrapper" v-if="!isLoading">
                 <iframe title="Main_Connection_3"
                     src="https://app.powerbi.com/reportEmbed?reportId=0384868a-6dcf-4d5d-b63d-d2d4688dadf8&autoAuth=true&ctid=f7bae8e1-a04b-4f86-9377-8eb84875e0a2"
-                    frameborder="0" allowFullScreen="true"></iframe>
+                    frameborder="0" allowFullScreen="false"></iframe>
             </div>
         </div>
     </div>
