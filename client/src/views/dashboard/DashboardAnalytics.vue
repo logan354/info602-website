@@ -21,8 +21,6 @@ import Footer from "../../components/Footer.vue";
 <style scoped>
 ._container {
     display: flex;
-    height: 1000px;
-    width: 100%;
 }
 
 .side-navigation {
@@ -30,7 +28,8 @@ import Footer from "../../components/Footer.vue";
 }
 
 .content {
-    padding: 20px;
+    flex-grow: 1;
+    padding: 50px 100px 50px 100px;
 }
 </style>
 
