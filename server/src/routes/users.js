@@ -15,17 +15,18 @@ const router = express.Router();
  * phone
  */
 
-// GET /?username
+// GET /?username&password
 router.get("/", async (req, res) => {
-    if (req.query.username) {
+    if (req.query.username && req.query.password) {
         try {
             const usersRaw = await sequelize.model("User_Table").findAll({
                 where: {
-                    User_Table_username: req.query.username
+                    User_Table_username: req.query.username,
+                    User_Table_password: req.query.password
                 }
             });
 
-            if (!usersRaw) {
+            if (!usersRaw || !usersRaw.length) {
                 return res.status(204).json([]);
             }
 

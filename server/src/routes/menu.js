@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
                 }
             });
 
-            if (!menuRaw) {
+            if (!menuRaw || !menuRaw.length) {
                 return res.status(204).json([]);
             }
 

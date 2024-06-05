@@ -21,7 +21,7 @@ const handleSubmit = async (event) => {
         loading.value = true;
 
         try {
-            const res = await fetch(apiURL + "/users?username=" + username.value, {
+            const res = await fetch(apiURL + "/users?username=" + username.value + "&password=" + password.value, {
                 method: "GET"
             });
 
@@ -29,7 +29,7 @@ const handleSubmit = async (event) => {
                 loading.value = false;
 
                 if (res.status === 204) {
-                    errorMessage.value = "Incorrect Username";
+                    errorMessage.value = "Incorrect Username or Password";
                 }
                 else {
                     alert("Login failed!\nServer Error");
@@ -38,7 +38,10 @@ const handleSubmit = async (event) => {
                 return;
             }
 
-            store.user = await res.json();
+            const data = await res.json();
+
+            console.log(res.status, data)
+            store.user = data[0];
         }
         catch (e) {
             loading.value = false;
