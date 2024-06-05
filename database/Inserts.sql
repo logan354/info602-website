@@ -3,7 +3,7 @@ GO
 
 INSERT INTO User_Table (User_Table_username, User_Table_password, User_Table_firstName, User_Table_lastName, User_Table_email, User_Table_phone, User_Table_isAdmin)
 VALUES
-('Rasai', 'youshallnotpass', 'Rasai', 'Catering', 'contact@rasaicatering.com', '1234567890', 1)
+('Rasai', 'youshallnotpass', 'Rasai', 'Catering', 'contact@rasaicatering.com', '1234567890', 1),
 ('kperera', 'srilanka123', 'Kamal', 'Perera', 'kamal.perera@example.lk', '0771234567', 0),
 ('dmendis', 'lankapass', 'Dilani', 'Mendis', 'dilani.mendis@example.lk', '0777654321', 0),
 ('nfernando', 'passwordSL', 'Nimal', 'Fernando', 'nimal.fernando@example.lk', '0711231234', 0),
