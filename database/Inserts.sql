@@ -1,16 +1,17 @@
 USE Rasai_DB;
 GO
 
-INSERT INTO User_Table (User_Table_username, User_Table_password, User_Table_firstName, User_Table_lastName, User_Table_email, User_Table_phone)
+INSERT INTO User_Table (User_Table_username, User_Table_password, User_Table_firstName, User_Table_lastName, User_Table_email, User_Table_phone, User_Table_isAdmin)
 VALUES
-('kperera', 'srilanka123', 'Kamal', 'Perera', 'kamal.perera@example.lk', '0771234567'),
-('dmendis', 'lankapass', 'Dilani', 'Mendis', 'dilani.mendis@example.lk', '0777654321'),
-('nfernando', 'passwordSL', 'Nimal', 'Fernando', 'nimal.fernando@example.lk', '0711231234'),
-('sjayawardena', 'supersecure', 'Saman', 'Jayawardena', 'saman.jayawardena@example.lk', '0704321432'),
-('gwijesinghe', 'cater123', 'Gayan', 'Wijesinghe', 'gayan.wijesinghe@example.lk', '0755555555'),
-('amunasinghe', 'password123', 'Amara', 'Munasinghe', 'amara.munasinghe@example.lk', '0761234567'),
-('rwije', 'securepass', 'Ruwan', 'Wijekoon', 'ruwan.wijekoon@example.lk', '0717654321'),
-('kfernando', 'fernando99', 'Kasun', 'Fernando', 'kasun.fernando@example.lk', '0721231234');
+('Rasai', 'youshallnotpass', 'Rasai', 'Catering', 'contact@rasaicatering.com', '1234567890', 1)
+('kperera', 'srilanka123', 'Kamal', 'Perera', 'kamal.perera@example.lk', '0771234567', 0),
+('dmendis', 'lankapass', 'Dilani', 'Mendis', 'dilani.mendis@example.lk', '0777654321', 0),
+('nfernando', 'passwordSL', 'Nimal', 'Fernando', 'nimal.fernando@example.lk', '0711231234', 0),
+('sjayawardena', 'supersecure', 'Saman', 'Jayawardena', 'saman.jayawardena@example.lk', '0704321432', 0),
+('gwijesinghe', 'cater123', 'Gayan', 'Wijesinghe', 'gayan.wijesinghe@example.lk', '0755555555', 0),
+('amunasinghe', 'password123', 'Amara', 'Munasinghe', 'amara.munasinghe@example.lk', '0761234567', 0),
+('rwije', 'securepass', 'Ruwan', 'Wijekoon', 'ruwan.wijekoon@example.lk', '0717654321', 0),
+('kfernando', 'fernando99', 'Kasun', 'Fernando', 'kasun.fernando@example.lk', '0721231234', 0);
 GO
 
 Select * from User_Table;
