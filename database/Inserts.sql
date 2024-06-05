@@ -1,14 +1,19 @@
 USE Rasai_DB;
 GO
 
-INSERT INTO Booking_Type_Table (Booking_Type_name)
+INSERT INTO User_Table (User_Table_username, User_Table_password, User_Table_firstName, User_Table_lastName, User_Table_email, User_Table_phone)
 VALUES
-('Wedding'),
-('Corporate Event'),
-('Birthday Party'),
-('Conference'),
-('Private Dinner'),
-('Other');
+('kperera', 'srilanka123', 'Kamal', 'Perera', 'kamal.perera@example.lk', '0771234567'),
+('dmendis', 'lankapass', 'Dilani', 'Mendis', 'dilani.mendis@example.lk', '0777654321'),
+('nfernando', 'passwordSL', 'Nimal', 'Fernando', 'nimal.fernando@example.lk', '0711231234'),
+('sjayawardena', 'supersecure', 'Saman', 'Jayawardena', 'saman.jayawardena@example.lk', '0704321432'),
+('gwijesinghe', 'cater123', 'Gayan', 'Wijesinghe', 'gayan.wijesinghe@example.lk', '0755555555'),
+('amunasinghe', 'password123', 'Amara', 'Munasinghe', 'amara.munasinghe@example.lk', '0761234567'),
+('rwije', 'securepass', 'Ruwan', 'Wijekoon', 'ruwan.wijekoon@example.lk', '0717654321'),
+('kfernando', 'fernando99', 'Kasun', 'Fernando', 'kasun.fernando@example.lk', '0721231234');
+GO
+
+Select * from User_Table;
 GO
 
 INSERT INTO Menu_Table (Menu_Table_name, Menu_Table_description)
@@ -29,17 +34,20 @@ VALUES
 GO
 
 Select * from Menu_Table;
-
-INSERT INTO User_Table (User_Table_userName, User_Table_password, User_Table_firstName, User_Table_lastName, User_Table_email, User_Table_phone)
-VALUES
-('kperera', 'srilanka123', 'Kamal', 'Perera', 'kamal.perera@example.lk', '0771234567'),
-('dmendis', 'lankapass', 'Dilani', 'Mendis', 'dilani.mendis@example.lk', '0777654321'),
-('nfernando', 'passwordSL', 'Nimal', 'Fernando', 'nimal.fernando@example.lk', '0711231234'),
-('sjayawardena', 'supersecure', 'Saman', 'Jayawardena', 'saman.jayawardena@example.lk', '0704321432'),
-('gwijesinghe', 'cater123', 'Gayan', 'Wijesinghe', 'gayan.wijesinghe@example.lk', '0755555555');
 GO
 
-Select * from User_Table;
+INSERT INTO Booking_Type_Table (Booking_Type_name)
+VALUES
+('Wedding'),
+('Corporate Event'),
+('Birthday Party'),
+('Conference'),
+('Private Dinner'),
+('Other');
+GO
+
+Select * from Booking_Type_Table;
+GO
 
 INSERT INTO Booking_Table (User_Table_id, Booking_Type_Table_id, Booking_Table_createdAt, Booking_Table_date, Booking_Table_location, Booking_Table_guests, Booking_Table_notes, Booking_Table_status)
 VALUES
@@ -47,39 +55,7 @@ VALUES
 (2, 3, '2024-02-01', '2024-07-20', 'Mount Lavinia Hotel', 50, 'Birthday celebration with close family and friends', 'Pending'),
 (3, 4, '2024-03-01', '2024-08-10', 'Shangri-La Colombo', 300, 'Annual business conference', 'Confirmed'),
 (4, 2, '2024-04-01', '2024-09-25', 'Cinnamon Grand', 100, 'Corporate event with international guests', 'Cancelled'),
-(5, 5, '2024-05-01', '2024-10-05', 'Private Beach Villa', 20, 'Private dinner for high-profile clients', 'Confirmed');
-GO
-
-Select * from Booking_Table;
-
-INSERT INTO Booking_Menu_Table (Booking_Table_id, Menu_Table_id)
-VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(1, 3),
-(2, 4),
-(3, 1),
-(4, 5),
-(5, 2);
-GO
-
-Select * from Booking_Menu_Table;
-
-INSERT INTO User_Table (User_Table_username, User_Table_password, User_Table_firstName, User_Table_lastName, User_Table_email, User_Table_phone)
-VALUES
-('amunasinghe', 'password123', 'Amara', 'Munasinghe', 'amara.munasinghe@example.lk', '0761234567'),
-('rwije', 'securepass', 'Ruwan', 'Wijekoon', 'ruwan.wijekoon@example.lk', '0717654321'),
-('kfernando', 'fernando99', 'Kasun', 'Fernando', 'kasun.fernando@example.lk', '0721231234');
-GO
-
-Select * from User_Table;
-GO
-
-INSERT INTO Booking_Table (User_Table_id, Booking_Type_Table_id, Booking_Table_createdAt, Booking_Table_date, Booking_Table_location, Booking_Table_guests, Booking_Table_notes, Booking_Table_status)
-VALUES
+(5, 5, '2024-05-01', '2024-10-05', 'Private Beach Villa', 20, 'Private dinner for high-profile clients', 'Confirmed'),
 (1, 3, '2024-06-01', '2024-11-15', 'The Kingsbury', 100, 'Birthday celebration', 'Confirmed'),
 (2, 2, '2024-07-01', '2024-12-20', 'Hilton Colombo', 250, 'Corporate annual meeting', 'Pending'),
 (3, 4, '2024-08-01', '2025-01-10', 'Jetwing Blue', 150, 'Product launch event', 'Confirmed'),
@@ -97,6 +73,16 @@ GO
 
 INSERT INTO Booking_Menu_Table (Booking_Table_id, Menu_Table_id)
 VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(1, 3),
+(2, 4),
+(3, 1),
+(4, 5),
+(5, 2),
 (15, 1),
 (13, 2),
 (10, 3),
