@@ -11,7 +11,8 @@ User_Table_password VARCHAR(40),
 User_Table_firstName VARCHAR(30),
 User_Table_lastName VARCHAR(30),
 User_Table_email VARCHAR(50),
-User_Table_phone VARCHAR(12)
+User_Table_phone VARCHAR(12),
+User_Table_isAdmin BIT DEFAULT 0
 );
 GO
 

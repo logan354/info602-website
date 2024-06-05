@@ -92,15 +92,11 @@ const clearForm = () => {
                     <label for="remember-me">Remember Me</label>
                 </div>
                 <div class="form-group">
-                    <a href="/forgot-password">Forgot Password?</a>
+                    <RouterLink to="/">Forgot Password?</RouterLink>
                 </div>
                 <button type="submit" :disabled="loading">{{ loading ? "Logging in..." : "Log In" }}</button>
                 <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
             </form>
-            <div class="social-login">
-                <button class="google-login" @click="loginWithGoogle">Login with Google</button>
-                <button class="facebook-login" @click="loginWithFacebook">Login with Facebook</button>
-            </div>
         </div>
         <div class="splash-text">
             <!-- Splash text content -->
@@ -108,47 +104,6 @@ const clearForm = () => {
     </div>
     <Footer />
 </template>
-
-<script setup>
-import Navbar from "../../components/Navigation.vue";
-import Footer from "../../components/Footer.vue";
-import { ref } from "vue";
-
-const username = ref("");
-const password = ref("");
-const rememberMe = ref(false);
-const errorMessage = ref("");
-const loading = ref(false);
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-    if (validateForm()) {
-        loading.value = true;
-        // Simulate an authentication API call
-        setTimeout(() => {
-            loading.value = false;
-            alert("Login successful!");
-            // Redirect to dashboard or another page
-        }, 2000);
-    }
-};
-
-const validateForm = () => {
-    if (!username.value || !password.value) {
-        errorMessage.value = "Please enter both username and password.";
-        return false;
-    }
-    return true;
-};
-
-const loginWithGoogle = () => {
-    // Handle login with Google
-};
-
-const loginWithFacebook = () => {
-    // Handle login with Facebook
-};
-</script>
 
 <style scoped>
 body {
@@ -181,12 +136,17 @@ header h1 {
 .splash-container {
     position: relative;
     width: 100%;
-    height: 900px; /* Set the height of the splash container */
-    background-color: #160101; /* Placeholder background color */
+    height: 900px;
+    /* Set the height of the splash container */
+    background-color: #160101;
+    /* Placeholder background color */
     background-image: url('../src/assets/images/splash/splash4.jpg');
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-size: cover; /* Cover the entire area */
-    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    /* Prevent the image from repeating */
+    background-size: cover;
+    /* Cover the entire area */
+    background-position: center;
+    /* Center the image */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -196,7 +156,8 @@ header h1 {
     width: 100%;
     max-width: 400px;
     text-align: center;
-    z-index: 1; /* Ensure the form is on top of the splash image */
+    z-index: 1;
+    /* Ensure the form is on top of the splash image */
 }
 
 form {
@@ -207,7 +168,8 @@ form {
     box-sizing: border-box;
     background-color: #ffffff;
     opacity: 90%;
-    margin: 0 auto; /* Center horizontally */
+    margin: 0 auto;
+    /* Center horizontally */
     text-align: left;
 }
 
@@ -257,24 +219,5 @@ button:hover:enabled {
 .error-message {
     color: red;
     margin-top: 10px;
-}
-
-.social-login {
-    margin-top: 20px;
-}
-
-.google-login, .facebook-login {
-    background-color: #3b5998; /* Facebook blue */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.facebook-login {
-    background-color: #dd4b39; /* Google red */
 }
 </style>
