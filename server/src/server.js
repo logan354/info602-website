@@ -29,6 +29,13 @@ const port = process.env.SERVER_PORT;
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow access from any origin ***DANGEROUS***
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allow the request methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow the headers
+  next();
+});
+
 /**
  * Routes
  * Base: localhost:3000/api
