@@ -9,13 +9,11 @@ const router = express.Router();
  * Booking
  * user_id
  * booking_type_id
- * created_at
  * date
  * location
  * guests
  * notes
- * status
- * menu_ids: []
+ * menu_ids
  * 
  * User
  * username

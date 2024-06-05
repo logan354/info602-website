@@ -5,7 +5,7 @@ CREATE LOGIN RasaiBE WITH PASSWORD = 'youshallnotpass';
 EXECUTE sp_addsrvrolemember 'RasaiBE', 'sysadmin';
 
 -- Use your desired database
-USE [YourDatabaseName];
+USE Rasai_DB;
 
 -- Add the login as a db_datareader and db_datawriter in the database
 CREATE USER RasaiBE FOR LOGIN RasaiBE;

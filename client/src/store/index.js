@@ -1,7 +1,7 @@
 import { reactive } from "vue";
 
 const store = reactive({
-    account: "HELLO" 
+    user: null
 });
 
 export { store }

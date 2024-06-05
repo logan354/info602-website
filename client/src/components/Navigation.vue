@@ -36,14 +36,14 @@ import { store } from "../store/index.js";
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">
+                        <a class="contact-us nav-link">
                             <RouterLink class="router-link" to="/contact-us"><strong>Contact Us</strong></RouterLink>
                         </a>
                     </li>
                 </ul>
 
                 <div class="navbar-account">
-                    <div v-if="!store.account">
+                    <div v-if="!store.user">
                         <!-- Account login and register options-->
                         <a class="nav-link">
                             <i class="bi bi-person-circle"></i>&nbsp;<RouterLink class="router-link" to="/login">Login
@@ -60,7 +60,7 @@ import { store } from "../store/index.js";
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets//images/profile/profile-placeholder.jpg" alt="" width="32"
                                     height="32" class="rounded-circle me-2">
-                                <strong style="color: #222121">{{ store.account.username }}</strong>
+                                <strong style="color: #222121">{{ store.user.username }}</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow"
                                 aria-labelledby="dropdownUser1">
@@ -110,9 +110,23 @@ import { store } from "../store/index.js";
     padding-right: 20px;
 }
 
+.contact-us {
+    border: 2px solid black;
+    padding: 5px;
+    background-color: #98908b;
+}
+
+.contact-us:hover {
+    background-color: #F8F9FA;
+}
+
 .nav-link .router-link {
     color: #222121;
     text-decoration: none;
+}
+
+.nav-link .router-link:hover {
+    color: red;
 }
 
 .navbar-account {
@@ -136,11 +150,11 @@ import { store } from "../store/index.js";
 export default {
     methods: {
         isAdmin() {
-            if (store.account.role !== 1) return false;
+            if (store.user.role !== 1) return false;
             else return true;
         },
         handleSignOut() {
-            store.account = null;
+            store.user = null;
         }
     }
 }
