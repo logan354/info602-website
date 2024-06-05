@@ -60,7 +60,7 @@ import { store } from "../store/index.js";
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets//images/profile/profile-placeholder.jpg" alt="" width="32"
                                     height="32" class="rounded-circle me-2">
-                                <strong style="color: #222121">{{ store.user.username }}</strong>
+                                <strong style="color: #222121">{{ store.user.User_Table_username }}</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow"
                                 aria-labelledby="dropdownUser1">
@@ -150,7 +150,7 @@ import { store } from "../store/index.js";
 export default {
     methods: {
         isAdmin() {
-            if (store.user.role !== 1) return false;
+            if (store.user.User_Table_isAdmin !== 1) return false;
             else return true;
         },
         handleSignOut() {
