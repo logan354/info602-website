@@ -1,3 +1,79 @@
+<script setup>
+import { ref } from "vue";
+import { RouterLink, useRouter } from "vue-router";
+import Navbar from "../../components/Navigation.vue";
+import Footer from "../../components/Footer.vue";
+import { store } from "@/store";
+import { apiURL } from "@/api";
+
+const router = useRouter();
+
+const username = ref("");
+const password = ref("");
+const rememberMe = ref(false);
+const errorMessage = ref("");
+const loading = ref(false);
+
+const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (validateForm()) {
+        loading.value = true;
+
+        try {
+            const res = await fetch(apiURL + "/users?username=" + username.value + "&password=" + password.value, {
+                method: "GET"
+            });
+
+            if (res.status !== 200) {
+                loading.value = false;
+
+                if (res.status === 204) {
+                    errorMessage.value = "Incorrect Username or Password";
+                }
+                else {
+                    alert("Login failed!\nServer Error");
+                }
+
+                return;
+            }
+
+            const data = await res.json();
+
+            console.log(res.status, data)
+            store.user = data[0];
+        }
+        catch (e) {
+            loading.value = false;
+            alert("Login failed!\n" + e.message);
+            return;
+        }
+
+        loading.value = false;
+        alert("Login successful!");
+        clearForm();
+
+        // Route to home page
+        router.push({ path: "/" });
+    }
+}
+
+const validateForm = () => {
+    if (!username.value || !password.value) {
+        errorMessage.value = "Please enter both username and password.";
+        return false;
+    }
+    return true;
+}
+
+const clearForm = () => {
+    username.value = ""
+    password.value = ""
+    rememberMe.value = false
+    errorMessage.value = ""
+}
+</script>
+
 <template>
     <Navbar />
     <div class="splash-container">

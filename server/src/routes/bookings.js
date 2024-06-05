@@ -49,7 +49,7 @@ router.get("/", async (req, res) => {
     try {
         const bookingsRaw = await sequelize.model("Booking_Table").findAll();
 
-        if (!bookingsRaw) {
+        if (!bookingsRaw || !bookingsRaw.length) {
             return res.status(204).json([]);
         }
 
@@ -98,7 +98,7 @@ router.get("/bookingTypes", async (req, res) => {
     try {
         const bookingTypesRaw = await sequelize.model("Booking_Type_Table").findAll();
 
-        if (!bookingTypesRaw) {
+        if (!bookingTypesRaw || !bookingTypesRaw.length) {
             return res.status(204).json([]);
         }
 
@@ -199,11 +199,11 @@ router.put("/:id", async (req, res) => {
 
         // BookingUpdate
         const bookingUpdateData = {}
-        if (booking.date) bookingUpdateData.Booking_Table_date = booking.date;
-        if (ooking.location) bookingUpdateData.Booking_Table_location = booking.location;
-        if (booking.guests) bookingUpdateData.Booking_Table_guests = booking.guests;
-        if (booking.notes) bookingUpdateData.Booking_Table_notes = booking.notes;
-        if (booking.status) bookingUpdateData.Booking_Table_status = booking.status;
+        if (booking.date) bookingUpdateData.Booking_Table_date = bookingUpdate.date;
+        if (ooking.location) bookingUpdateData.Booking_Table_location = bookingUpdate.location;
+        if (booking.guests) bookingUpdateData.Booking_Table_guests = bookingUpdate.guests;
+        if (booking.notes) bookingUpdateData.Booking_Table_notes = bookingUpdate.notes;
+        if (booking.status) bookingUpdateData.Booking_Table_status = bookingUpdate.status;
 
         await bookingRaw.update(bookingUpdateData);
 
