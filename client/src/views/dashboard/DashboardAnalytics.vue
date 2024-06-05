@@ -6,9 +6,11 @@ import Footer from "../../components/Footer.vue";
 
 <template>
     <Navigation />
-    <div class="side-navigation">
-        <DashboardSideNavigation />
-        <div class="container">
+    <div class="_container">
+        <div class="side-navigation">
+            <DashboardSideNavigation />
+        </div>
+        <div class="content">
             <h2 class="report-title">Analytics</h2>
             <div class="controls">
                 <!-- Example control, add as needed -->
@@ -19,7 +21,9 @@ import Footer from "../../components/Footer.vue";
             </div>
             <loading-spinner v-if="isLoading" />
             <div class="iframe-wrapper" v-if="!isLoading">
-                <iframe title="Main_Connection_3" src="https://app.powerbi.com/reportEmbed?reportId=0384868a-6dcf-4d5d-b63d-d2d4688dadf8&autoAuth=true&ctid=f7bae8e1-a04b-4f86-9377-8eb84875e0a2" frameborder="0" allowFullScreen="true"></iframe>
+                <iframe title="Main_Connection_3"
+                    src="https://app.powerbi.com/reportEmbed?reportId=0384868a-6dcf-4d5d-b63d-d2d4688dadf8&autoAuth=true&ctid=f7bae8e1-a04b-4f86-9377-8eb84875e0a2"
+                    frameborder="0" allowFullScreen="true"></iframe>
             </div>
         </div>
     </div>
@@ -27,13 +31,17 @@ import Footer from "../../components/Footer.vue";
 </template>
 
 <style scoped>
-.side-navigation {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
+._container {
+    display: flex;
 }
 
-.container {
-    padding: 0px; /* Adjust as needed for spacing */
+.side-navigation {
+    padding: 0px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 50px 100px 50px 100px;
 }
 
 .breadcrumb {
@@ -54,9 +62,11 @@ import Footer from "../../components/Footer.vue";
 .iframe-wrapper {
     width: 100%;
     height: 0;
-    padding-bottom: 47.5%; /* Adjust based on aspect ratio */
+    padding-bottom: 47.5%;
+    /* Adjust based on aspect ratio */
     position: relative;
-    border: 3px solid #000; /* 3px thick border */
+    border: 3px solid #000;
+    /* 3px thick border */
 }
 
 iframe {

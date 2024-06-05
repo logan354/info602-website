@@ -3,11 +3,11 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 250px; height: 750px">
+  <div class="side-navigation d-flex flex-column flex-shrink-0 p-3 text-white">
     <ul class="nav nav-pills flex-column mb-auto" @click="handleClick">
       <hr>
       <li>
-        <a id="navigation-dashboard" class="nav-link text-white">
+        <a id="navigation-dashboard" class="nav-link text-white active">
           <i class="bi bi-house-door-fill"></i>&nbsp;&nbsp;&nbsp;<RouterLink id="dashboard" class="router-link"
             to="/dashboard/home">Dashboard</RouterLink>
         </a>
@@ -29,6 +29,12 @@ import { RouterLink } from "vue-router";
 </template>
 
 <style scoped>
+.side-navigation {
+  width: 250px;
+  height: 1000px;
+  background-color: #222121;
+}
+
 .nav li {
   padding-bottom: 10px;
 }
