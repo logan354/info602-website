@@ -1,43 +1,3 @@
-<template>
-    <Navbar />
-    <div class="splash-container">
-        <div class="container">
-            <form id="registration-form" @submit="handleSubmit">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" v-model="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" v-model="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" v-model="confirmPassword" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" v-model="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" v-model="phone" required>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" id="terms" v-model="termsAccepted" required>
-                    <label for="terms">I agree to the <a href="/terms">terms and conditions</a></label>
-                </div>
-                <button type="submit" :disabled="loading">{{ loading ? "Registering..." : "Register" }}</button>
-                <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-            </form>
-        </div>
-        <div class="splash-text">
-            <!-- Splash text content -->
-        </div>
-    </div>
-    <Footer />
-</template>
-
 <script setup>
 import Navbar from "../../components/Navigation.vue";
 import Footer from "../../components/Footer.vue";
@@ -77,6 +37,46 @@ const handleSubmit = (event) => {
     }
 };
 </script>
+
+<template>
+    <Navbar />
+    <div class="splash-container">
+        <div class="container">
+            <form id="registration-form" @submit="handleSubmit">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" v-model="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" v-model="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" v-model="confirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" v-model="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" v-model="phone" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms" v-model="termsAccepted" required>
+                    <label for="terms">I agree to the <a href="/terms">terms and conditions</a></label>
+                </div>
+                <button type="submit" :disabled="loading">{{ loading ? "Registering..." : "Register" }}</button>
+                <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+            </form>
+        </div>
+        <div class="splash-text">
+            <!-- Splash text content -->
+        </div>
+    </div>
+    <Footer />
+</template>
 
 <style scoped>
 body {
@@ -187,3 +187,6 @@ button:hover:enabled {
     margin-top: 10px;
 }
 </style>
+
+<script>
+</script>
