@@ -24,7 +24,7 @@ GO
 
 CREATE TABLE Booking_Type_Table(
 Booking_Type_Table_id INT IDENTITY(1,1) PRIMARY KEY,
-Booking_Type_name VARCHAR(30)
+Booking_Type_Table_name VARCHAR(30)
 );
 GO
 
